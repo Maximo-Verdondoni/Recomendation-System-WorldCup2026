@@ -1,0 +1,73 @@
+id,match_number,group_name,home_team_id,home_team,home_team_code,away_team_id,away_team,away_team_code,stadium_id,stadium,stadium_city,stadium_country,date,time_utc
+2,1,A,1,Mexico,MEX,3,South Africa,RSA,14,Estadio Azteca,Mexico City,Mexico,2026-06-11,19:00:00
+1,2,A,2,Korea Republic,KOR,4,Czechia,CZE,16,Estadio Akron,Guadalajara,Mexico,2026-06-12,02:00:00
+7,3,B,5,Canada,CAN,8,Bosnia-Herzegovina,BIH,13,BMO Field,"Toronto, ON",Canada,2026-06-12,19:00:00
+20,4,D,13,USA,USA,15,Paraguay,PAR,3,SoFi Stadium,"Inglewood, CA",USA,2026-06-13,01:00:00
+9,8,B,6,Qatar,QAT,7,Switzerland,SUI,4,Levi's Stadium,"Santa Clara, CA",USA,2026-06-13,19:00:00
+13,7,C,9,Brazil,BRA,12,Morocco,MAR,1,MetLife Stadium,"East Rutherford, NJ",USA,2026-06-13,22:00:00
+15,5,C,10,Haiti,HAI,11,Scotland,SCO,9,Gillette Stadium,"Foxborough, MA",USA,2026-06-14,01:00:00
+19,6,D,14,Australia,AUS,16,Turkey,TUR,12,BC Place,"Vancouver, BC",Canada,2026-06-14,04:00:00
+26,10,E,19,Germany,GER,20,Curaçao,CUW,10,NRG Stadium,"Houston, TX",USA,2026-06-14,17:00:00
+34,11,F,21,Netherlands,NED,22,Japan,JPN,2,AT&T Stadium,"Arlington, TX",USA,2026-06-14,20:00:00
+28,9,E,17,Côte d'Ivoire,CIV,18,Ecuador,ECU,7,Lincoln Financial Field,"Philadelphia, PA",USA,2026-06-14,23:00:00
+33,12,F,24,Sweden,SWE,23,Tunisia,TUN,15,Estadio BBVA,Monterrey,Mexico,2026-06-15,02:00:00
+43,14,H,30,Spain,ESP,32,Cabo Verde,CPV,17,Mercedes-Benz Stadium,"Atlanta, GA",USA,2026-06-15,16:00:00
+40,16,G,25,Belgium,BEL,26,Egypt,EGY,6,Lumen Field,"Seattle, WA",USA,2026-06-15,19:00:00
+45,13,H,29,Saudi Arabia,KSA,31,Uruguay,URU,5,Hard Rock Stadium,"Miami Gardens, FL",USA,2026-06-15,22:00:00
+37,15,G,27,IR Iran,IRN,28,New Zealand,NZL,3,SoFi Stadium,"Inglewood, CA",USA,2026-06-16,01:00:00
+52,17,I,33,France,FRA,34,Senegal,SEN,1,MetLife Stadium,"East Rutherford, NJ",USA,2026-06-16,19:00:00
+51,18,I,36,Iraq,IRQ,35,Norway,NOR,9,Gillette Stadium,"Foxborough, MA",USA,2026-06-16,22:00:00
+58,19,J,37,Argentina,ARG,38,Algeria,ALG,8,Arrowhead Stadium,"Kansas City, MO",USA,2026-06-17,01:00:00
+55,20,J,39,Austria,AUT,40,Jordan,JOR,4,Levi's Stadium,"Santa Clara, CA",USA,2026-06-17,04:00:00
+61,23,K,41,Portugal,POR,44,Congo DR,COD,10,NRG Stadium,"Houston, TX",USA,2026-06-17,17:00:00
+68,22,L,47,England,ENG,48,Croatia,CRO,2,AT&T Stadium,"Arlington, TX",USA,2026-06-17,20:00:00
+70,21,L,45,Ghana,GHA,46,Panama,PAN,13,BMO Field,"Toronto, ON",Canada,2026-06-17,23:00:00
+63,24,K,42,Uzbekistan,UZB,43,Colombia,COL,14,Estadio Azteca,Mexico City,Mexico,2026-06-18,02:00:00
+3,25,A,4,Czechia,CZE,3,South Africa,RSA,17,Mercedes-Benz Stadium,"Atlanta, GA",USA,2026-06-18,16:00:00
+8,26,B,7,Switzerland,SUI,8,Bosnia-Herzegovina,BIH,3,SoFi Stadium,"Inglewood, CA",USA,2026-06-18,19:00:00
+10,27,B,5,Canada,CAN,6,Qatar,QAT,12,BC Place,"Vancouver, BC",Canada,2026-06-18,22:00:00
+4,28,A,1,Mexico,MEX,2,Korea Republic,KOR,16,Estadio Akron,Guadalajara,Mexico,2026-06-19,01:00:00
+22,32,D,13,USA,USA,14,Australia,AUS,6,Lumen Field,"Seattle, WA",USA,2026-06-19,19:00:00
+14,30,C,11,Scotland,SCO,12,Morocco,MAR,9,Gillette Stadium,"Foxborough, MA",USA,2026-06-19,22:00:00
+16,29,C,9,Brazil,BRA,10,Haiti,HAI,7,Lincoln Financial Field,"Philadelphia, PA",USA,2026-06-20,01:00:00
+21,31,D,16,Turkey,TUR,15,Paraguay,PAR,4,Levi's Stadium,"Santa Clara, CA",USA,2026-06-20,04:00:00
+31,35,F,21,Netherlands,NED,24,Sweden,SWE,10,NRG Stadium,"Houston, TX",USA,2026-06-20,17:00:00
+29,33,E,19,Germany,GER,17,Côte d'Ivoire,CIV,13,BMO Field,"Toronto, ON",Canada,2026-06-20,20:00:00
+25,34,E,18,Ecuador,ECU,20,Curaçao,CUW,8,Arrowhead Stadium,"Kansas City, MO",USA,2026-06-21,00:00:00
+35,36,F,23,Tunisia,TUN,22,Japan,JPN,15,Estadio BBVA,Monterrey,Mexico,2026-06-21,04:00:00
+47,38,H,30,Spain,ESP,29,Saudi Arabia,KSA,17,Mercedes-Benz Stadium,"Atlanta, GA",USA,2026-06-21,16:00:00
+38,39,G,25,Belgium,BEL,27,IR Iran,IRN,3,SoFi Stadium,"Inglewood, CA",USA,2026-06-21,19:00:00
+44,37,H,31,Uruguay,URU,32,Cabo Verde,CPV,5,Hard Rock Stadium,"Miami Gardens, FL",USA,2026-06-21,22:00:00
+41,40,G,28,New Zealand,NZL,26,Egypt,EGY,12,BC Place,"Vancouver, BC",Canada,2026-06-22,01:00:00
+56,43,J,37,Argentina,ARG,39,Austria,AUT,2,AT&T Stadium,"Arlington, TX",USA,2026-06-22,17:00:00
+49,42,I,33,France,FRA,36,Iraq,IRQ,7,Lincoln Financial Field,"Philadelphia, PA",USA,2026-06-22,21:00:00
+53,41,I,35,Norway,NOR,34,Senegal,SEN,1,MetLife Stadium,"East Rutherford, NJ",USA,2026-06-23,00:00:00
+59,44,J,40,Jordan,JOR,38,Algeria,ALG,4,Levi's Stadium,"Santa Clara, CA",USA,2026-06-23,03:00:00
+64,47,K,41,Portugal,POR,42,Uzbekistan,UZB,10,NRG Stadium,"Houston, TX",USA,2026-06-23,17:00:00
+71,45,L,47,England,ENG,45,Ghana,GHA,9,Gillette Stadium,"Foxborough, MA",USA,2026-06-23,20:00:00
+67,46,L,46,Panama,PAN,48,Croatia,CRO,13,BMO Field,"Toronto, ON",Canada,2026-06-23,23:00:00
+62,48,K,43,Colombia,COL,44,Congo DR,COD,16,Estadio Akron,Guadalajara,Mexico,2026-06-24,02:00:00
+11,52,B,8,Bosnia-Herzegovina,BIH,6,Qatar,QAT,6,Lumen Field,"Seattle, WA",USA,2026-06-24,19:00:00
+12,51,B,7,Switzerland,SUI,5,Canada,CAN,12,BC Place,"Vancouver, BC",Canada,2026-06-24,19:00:00
+18,49,C,11,Scotland,SCO,9,Brazil,BRA,5,Hard Rock Stadium,"Miami Gardens, FL",USA,2026-06-24,22:00:00
+17,50,C,12,Morocco,MAR,10,Haiti,HAI,17,Mercedes-Benz Stadium,"Atlanta, GA",USA,2026-06-24,22:00:00
+6,53,A,4,Czechia,CZE,1,Mexico,MEX,14,Estadio Azteca,Mexico City,Mexico,2026-06-25,01:00:00
+5,54,A,3,South Africa,RSA,2,Korea Republic,KOR,15,Estadio BBVA,Monterrey,Mexico,2026-06-25,01:00:00
+30,55,E,20,Curaçao,CUW,17,Côte d'Ivoire,CIV,7,Lincoln Financial Field,"Philadelphia, PA",USA,2026-06-25,20:00:00
+27,56,E,18,Ecuador,ECU,19,Germany,GER,1,MetLife Stadium,"East Rutherford, NJ",USA,2026-06-25,20:00:00
+36,58,F,23,Tunisia,TUN,21,Netherlands,NED,8,Arrowhead Stadium,"Kansas City, MO",USA,2026-06-25,23:00:00
+32,57,F,22,Japan,JPN,24,Sweden,SWE,2,AT&T Stadium,"Arlington, TX",USA,2026-06-25,23:00:00
+24,59,D,16,Turkey,TUR,13,USA,USA,3,SoFi Stadium,"Inglewood, CA",USA,2026-06-26,02:00:00
+23,60,D,15,Paraguay,PAR,14,Australia,AUS,4,Levi's Stadium,"Santa Clara, CA",USA,2026-06-26,02:00:00
+50,62,I,34,Senegal,SEN,36,Iraq,IRQ,13,BMO Field,"Toronto, ON",Canada,2026-06-26,19:00:00
+54,61,I,35,Norway,NOR,33,France,FRA,9,Gillette Stadium,"Foxborough, MA",USA,2026-06-26,19:00:00
+48,65,H,32,Cabo Verde,CPV,29,Saudi Arabia,KSA,10,NRG Stadium,"Houston, TX",USA,2026-06-27,00:00:00
+46,66,H,31,Uruguay,URU,30,Spain,ESP,16,Estadio Akron,Guadalajara,Mexico,2026-06-27,00:00:00
+39,63,G,26,Egypt,EGY,27,IR Iran,IRN,6,Lumen Field,"Seattle, WA",USA,2026-06-27,03:00:00
+42,64,G,28,New Zealand,NZL,25,Belgium,BEL,12,BC Place,"Vancouver, BC",Canada,2026-06-27,03:00:00
+69,67,L,46,Panama,PAN,47,England,ENG,1,MetLife Stadium,"East Rutherford, NJ",USA,2026-06-27,21:00:00
+72,68,L,48,Croatia,CRO,45,Ghana,GHA,7,Lincoln Financial Field,"Philadelphia, PA",USA,2026-06-27,21:00:00
+65,72,K,44,Congo DR,COD,42,Uzbekistan,UZB,17,Mercedes-Benz Stadium,"Atlanta, GA",USA,2026-06-27,23:30:00
+66,71,K,43,Colombia,COL,41,Portugal,POR,5,Hard Rock Stadium,"Miami Gardens, FL",USA,2026-06-27,23:30:00
+57,69,J,38,Algeria,ALG,39,Austria,AUT,8,Arrowhead Stadium,"Kansas City, MO",USA,2026-06-28,02:00:00
+60,70,J,40,Jordan,JOR,37,Argentina,ARG,2,AT&T Stadium,"Arlington, TX",USA,2026-06-28,02:00:00
