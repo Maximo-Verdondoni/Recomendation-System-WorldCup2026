@@ -1,0 +1,549 @@
+<table>
+<thead>
+<tr class="persist-header">
+<th class="a1"></th>
+<th class="s20">Name</th><th class="s20"><span data-tippy-top="" data-tippy-content="Formation" aria-expanded="false">Formation</span></th><th class="d2"><a rel="nofollow" href="/teams?type=national&amp;showCol%5B0%5D=oa&amp;showCol%5B1%5D=at&amp;showCol%5B2%5D=md&amp;showCol%5B3%5D=df&amp;showCol%5B4%5D=fm&amp;showCol%5B5%5D=ip&amp;col=oa&amp;sort=desc" data-tippy-top="" data-tippy-content="Overall" aria-expanded="false"><span class="sorter"></span>Overall	</a></th><th class="d2"><a rel="nofollow" href="/teams?type=national&amp;showCol%5B0%5D=oa&amp;showCol%5B1%5D=at&amp;showCol%5B2%5D=md&amp;showCol%5B3%5D=df&amp;showCol%5B4%5D=fm&amp;showCol%5B5%5D=ip&amp;col=at&amp;sort=desc" data-tippy-top="" data-tippy-content="Attack" aria-expanded="false"><span class="sorter"></span>Attack	</a></th><th class="d2"><a rel="nofollow" href="/teams?type=national&amp;showCol%5B0%5D=oa&amp;showCol%5B1%5D=at&amp;showCol%5B2%5D=md&amp;showCol%5B3%5D=df&amp;showCol%5B4%5D=fm&amp;showCol%5B5%5D=ip&amp;col=md&amp;sort=desc" data-tippy-top="" data-tippy-content="Midfield" aria-expanded="false"><span class="sorter"></span>Midfield	</a></th><th class="d2"><a rel="nofollow" href="/teams?type=national&amp;showCol%5B0%5D=oa&amp;showCol%5B1%5D=at&amp;showCol%5B2%5D=md&amp;showCol%5B3%5D=df&amp;showCol%5B4%5D=fm&amp;showCol%5B5%5D=ip&amp;col=df&amp;sort=desc" data-tippy-top="" data-tippy-content="Defence" aria-expanded="false"><span class="sorter"></span>Defence	</a></th><th class="d2"><a rel="nofollow" href="/teams?type=national&amp;showCol%5B0%5D=oa&amp;showCol%5B1%5D=at&amp;showCol%5B2%5D=md&amp;showCol%5B3%5D=df&amp;showCol%5B4%5D=fm&amp;showCol%5B5%5D=ip&amp;col=ip&amp;sort=desc" data-tippy-top="" data-tippy-content="International prestige" aria-expanded="false"><span class="sorter"></span>International prestige	</a></th><th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18647/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18647/120.png 2x, https://cdn.sofifa.net/meta/team/18647/180.png 3x" src="https://cdn.sofifa.net/meta/team/18647/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18647/120.png 2x, https://cdn.sofifa.net/meta/team/18647/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1335/france/260035/">France</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-3-3 Attack</td><td class="" data-col="oa"><em title="86">86</em></td><td class="" data-col="at"><em title="87">87</em></td><td class="" data-col="md"><em title="85">85</em></td><td class="" data-col="df"><em title="85">85</em></td><td class="" data-col="ip"><em>10</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18710/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18710/120.png 2x, https://cdn.sofifa.net/meta/team/18710/180.png 3x" src="https://cdn.sofifa.net/meta/team/18710/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18710/120.png 2x, https://cdn.sofifa.net/meta/team/18710/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1362/spain/260035/">Spain</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-2-1-3</td><td class="" data-col="oa"><em title="85">85</em></td><td class="" data-col="at"><em title="85">85</em></td><td class="" data-col="md"><em title="86">86</em></td><td class="" data-col="df"><em title="83">83</em></td><td class="" data-col="ip"><em>10</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18645/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18645/120.png 2x, https://cdn.sofifa.net/meta/team/18645/180.png 3x" src="https://cdn.sofifa.net/meta/team/18645/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18645/120.png 2x, https://cdn.sofifa.net/meta/team/18645/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1318/england/260035/">England</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="84">84</em></td><td class="" data-col="at"><em title="86">86</em></td><td class="" data-col="md"><em title="85">85</em></td><td class="" data-col="df"><em title="83">83</em></td><td class="" data-col="ip"><em>8</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18660/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18660/120.png 2x, https://cdn.sofifa.net/meta/team/18660/180.png 3x" src="https://cdn.sofifa.net/meta/team/18660/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18660/120.png 2x, https://cdn.sofifa.net/meta/team/18660/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1337/germany/260035/">Germany</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-2-3-1 Narrow</td><td class="" data-col="oa"><em title="84">84</em></td><td class="" data-col="at"><em title="81">81</em></td><td class="" data-col="md"><em title="84">84</em></td><td class="" data-col="df"><em title="85">85</em></td><td class="" data-col="ip"><em>9</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18701/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18701/120.png 2x, https://cdn.sofifa.net/meta/team/18701/180.png 3x" src="https://cdn.sofifa.net/meta/team/18701/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18701/120.png 2x, https://cdn.sofifa.net/meta/team/18701/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1354/portugal/260035/">Portugal</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-3-3 Holding</td><td class="" data-col="oa"><em title="84">84</em></td><td class="" data-col="at"><em title="84">84</em></td><td class="" data-col="md"><em title="86">86</em></td><td class="" data-col="df"><em title="84">84</em></td><td class="" data-col="ip"><em>8</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18658/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18658/120.png 2x, https://cdn.sofifa.net/meta/team/18658/180.png 3x" src="https://cdn.sofifa.net/meta/team/18658/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18658/120.png 2x, https://cdn.sofifa.net/meta/team/18658/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1343/italy/260035/">Italy</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">5-3-2</td><td class="" data-col="oa"><em title="83">83</em></td><td class="" data-col="at"><em title="82">82</em></td><td class="" data-col="md"><em title="83">83</em></td><td class="" data-col="df"><em title="83">83</em></td><td class="" data-col="ip"><em>8</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18644/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18644/120.png 2x, https://cdn.sofifa.net/meta/team/18644/180.png 3x" src="https://cdn.sofifa.net/meta/team/18644/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18644/120.png 2x, https://cdn.sofifa.net/meta/team/18644/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1369/argentina/260035/">Argentina</a><br><img title="CONMEBOL" alt="" src="https://cdn.sofifa.net/flags/conmebol.png" data-src="https://cdn.sofifa.net/flags/conmebol.png" data-srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" data-was-processed="true"> <a href="/teams?as=4" rel="nofollow" class="sub">CONMEBOL</a></td>
+<td class="" data-col="fm">4-3-3 Holding</td><td class="" data-col="oa"><em title="83">83</em></td><td class="" data-col="at"><em title="84">84</em></td><td class="" data-col="md"><em title="83">83</em></td><td class="" data-col="df"><em title="79">79</em></td><td class="" data-col="ip"><em>10</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18704/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18704/120.png 2x, https://cdn.sofifa.net/meta/team/18704/180.png 3x" src="https://cdn.sofifa.net/meta/team/18704/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18704/120.png 2x, https://cdn.sofifa.net/meta/team/18704/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1370/brazil/260035/">Brazil</a><br><img title="CONMEBOL" alt="" src="https://cdn.sofifa.net/flags/conmebol.png" data-src="https://cdn.sofifa.net/flags/conmebol.png" data-srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" data-was-processed="true"> <a href="/teams?as=4" rel="nofollow" class="sub">CONMEBOL</a></td>
+<td class="" data-col="fm">4-4-2 Holding</td><td class="" data-col="oa"><em title="83">83</em></td><td class="" data-col="at"><em title="82">82</em></td><td class="" data-col="md"><em title="81">81</em></td><td class="" data-col="df"><em title="83">83</em></td><td class="" data-col="ip"><em>10</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18694/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18694/120.png 2x, https://cdn.sofifa.net/meta/team/18694/180.png 3x" src="https://cdn.sofifa.net/meta/team/18694/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18694/120.png 2x, https://cdn.sofifa.net/meta/team/18694/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/105035/netherlands/260035/">Netherlands</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-2-1-3</td><td class="" data-col="oa"><em title="82">82</em></td><td class="" data-col="at"><em title="81">81</em></td><td class="" data-col="md"><em title="83">83</em></td><td class="" data-col="df"><em title="84">84</em></td><td class="" data-col="ip"><em>8</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18743/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18743/120.png 2x, https://cdn.sofifa.net/meta/team/18743/180.png 3x" src="https://cdn.sofifa.net/meta/team/18743/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18743/120.png 2x, https://cdn.sofifa.net/meta/team/18743/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1325/belgium/260035/">Belgium</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-3-3 Holding</td><td class="" data-col="oa"><em title="81">81</em></td><td class="" data-col="at"><em title="82">82</em></td><td class="" data-col="md"><em title="82">82</em></td><td class="" data-col="df"><em title="78">78</em></td><td class="" data-col="ip"><em>8</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18551/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18551/120.png 2x, https://cdn.sofifa.net/meta/team/18551/180.png 3x" src="https://cdn.sofifa.net/meta/team/18551/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18551/120.png 2x, https://cdn.sofifa.net/meta/team/18551/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111111/morocco/260035/">Morocco</a><br><img title="CAF" alt="" src="https://cdn.sofifa.net/flags/caf.png" data-src="https://cdn.sofifa.net/flags/caf.png" data-srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=2" rel="nofollow" class="sub">CAF</a></td>
+<td class="" data-col="fm">4-1-4-1</td><td class="" data-col="oa"><em title="79">79</em></td><td class="" data-col="at"><em title="80">80</em></td><td class="" data-col="md"><em title="79">79</em></td><td class="" data-col="df"><em title="79">79</em></td><td class="" data-col="ip"><em>6</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18588/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18588/120.png 2x, https://cdn.sofifa.net/meta/team/18588/180.png 3x" src="https://cdn.sofifa.net/meta/team/18588/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18588/120.png 2x, https://cdn.sofifa.net/meta/team/18588/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1328/croatia/260035/">Croatia</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-4-2 Holding</td><td class="" data-col="oa"><em title="79">79</em></td><td class="" data-col="at"><em title="78">78</em></td><td class="" data-col="md"><em title="79">79</em></td><td class="" data-col="df"><em title="78">78</em></td><td class="" data-col="ip"><em>6</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18578/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18578/120.png 2x, https://cdn.sofifa.net/meta/team/18578/180.png 3x" src="https://cdn.sofifa.net/meta/team/18578/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18578/120.png 2x, https://cdn.sofifa.net/meta/team/18578/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1352/norway/260035/">Norway</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-3-3 Holding</td><td class="" data-col="oa"><em title="79">79</em></td><td class="" data-col="at"><em title="80">80</em></td><td class="" data-col="md"><em title="81">81</em></td><td class="" data-col="df"><em title="75">75</em></td><td class="" data-col="ip"><em>3</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18716/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18716/120.png 2x, https://cdn.sofifa.net/meta/team/18716/180.png 3x" src="https://cdn.sofifa.net/meta/team/18716/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18716/120.png 2x, https://cdn.sofifa.net/meta/team/18716/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1365/turkiye/260035/">Türkiye</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="79">79</em></td><td class="" data-col="at"><em title="79">79</em></td><td class="" data-col="md"><em title="80">80</em></td><td class="" data-col="df"><em title="78">78</em></td><td class="" data-col="ip"><em>6</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/15251/60.png" data-srcset="https://cdn.sofifa.net/meta/team/15251/120.png 2x, https://cdn.sofifa.net/meta/team/15251/180.png 3x" src="https://cdn.sofifa.net/meta/team/15251/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/15251/120.png 2x, https://cdn.sofifa.net/meta/team/15251/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1377/uruguay/260035/">Uruguay</a><br><img title="CONMEBOL" alt="" src="https://cdn.sofifa.net/flags/conmebol.png" data-src="https://cdn.sofifa.net/flags/conmebol.png" data-srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" data-was-processed="true"> <a href="/teams?as=4" rel="nofollow" class="sub">CONMEBOL</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="79">79</em></td><td class="" data-col="at"><em title="78">78</em></td><td class="" data-col="md"><em title="79">79</em></td><td class="" data-col="df"><em title="79">79</em></td><td class="" data-col="ip"><em>6</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18558/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18558/120.png 2x, https://cdn.sofifa.net/meta/team/18558/180.png 3x" src="https://cdn.sofifa.net/meta/team/18558/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18558/120.png 2x, https://cdn.sofifa.net/meta/team/18558/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1667/senegal/260035/">Senegal</a><br><img title="CAF" alt="" src="https://cdn.sofifa.net/flags/caf.png" data-src="https://cdn.sofifa.net/flags/caf.png" data-srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=2" rel="nofollow" class="sub">CAF</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="79">79</em></td><td class="" data-col="at"><em title="79">79</em></td><td class="" data-col="md"><em title="79">79</em></td><td class="" data-col="df"><em title="78">78</em></td><td class="" data-col="ip"><em>4</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18720/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18720/120.png 2x, https://cdn.sofifa.net/meta/team/18720/180.png 3x" src="https://cdn.sofifa.net/meta/team/18720/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18720/120.png 2x, https://cdn.sofifa.net/meta/team/18720/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111109/colombia/260035/">Colombia</a><br><img title="CONMEBOL" alt="" src="https://cdn.sofifa.net/flags/conmebol.png" data-src="https://cdn.sofifa.net/flags/conmebol.png" data-srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" data-was-processed="true"> <a href="/teams?as=4" rel="nofollow" class="sub">CONMEBOL</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="78">78</em></td><td class="" data-col="at"><em title="79">79</em></td><td class="" data-col="md"><em title="79">79</em></td><td class="" data-col="df"><em title="78">78</em></td><td class="" data-col="ip"><em>6</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18560/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18560/120.png 2x, https://cdn.sofifa.net/meta/team/18560/180.png 3x" src="https://cdn.sofifa.net/meta/team/18560/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18560/120.png 2x, https://cdn.sofifa.net/meta/team/18560/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111112/cote-divoire/260035/">Côte d'Ivoire</a><br><img title="CAF" alt="" src="https://cdn.sofifa.net/flags/caf.png" data-src="https://cdn.sofifa.net/flags/caf.png" data-srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=2" rel="nofollow" class="sub">CAF</a></td>
+<td class="" data-col="fm">4-1-4-1</td><td class="" data-col="oa"><em title="78">78</em></td><td class="" data-col="at"><em title="80">80</em></td><td class="" data-col="md"><em title="78">78</em></td><td class="" data-col="df"><em title="78">78</em></td><td class="" data-col="ip"><em>5</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18643/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18643/120.png 2x, https://cdn.sofifa.net/meta/team/18643/180.png 3x" src="https://cdn.sofifa.net/meta/team/18643/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18643/120.png 2x, https://cdn.sofifa.net/meta/team/18643/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1322/austria/260035/">Austria</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-2-3-1 Narrow</td><td class="" data-col="oa"><em title="78">78</em></td><td class="" data-col="at"><em title="77">77</em></td><td class="" data-col="md"><em title="79">79</em></td><td class="" data-col="df"><em title="78">78</em></td><td class="" data-col="ip"><em>5</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18583/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18583/120.png 2x, https://cdn.sofifa.net/meta/team/18583/180.png 3x" src="https://cdn.sofifa.net/meta/team/18583/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18583/120.png 2x, https://cdn.sofifa.net/meta/team/18583/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1331/denmark/260035/">Denmark</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-3-3 Flat</td><td class="" data-col="oa"><em title="78">78</em></td><td class="" data-col="at"><em title="78">78</em></td><td class="" data-col="md"><em title="79">79</em></td><td class="" data-col="df"><em title="78">78</em></td><td class="" data-col="ip"><em>5</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18708/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18708/120.png 2x, https://cdn.sofifa.net/meta/team/18708/180.png 3x" src="https://cdn.sofifa.net/meta/team/18708/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18708/120.png 2x, https://cdn.sofifa.net/meta/team/18708/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1364/switzerland/260035/">Switzerland</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-3-3 Holding</td><td class="" data-col="oa"><em title="78">78</em></td><td class="" data-col="at"><em title="77">77</em></td><td class="" data-col="md"><em title="79">79</em></td><td class="" data-col="df"><em title="76">76</em></td><td class="" data-col="ip"><em>7</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18718/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18718/120.png 2x, https://cdn.sofifa.net/meta/team/18718/180.png 3x" src="https://cdn.sofifa.net/meta/team/18718/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18718/120.png 2x, https://cdn.sofifa.net/meta/team/18718/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1330/czechia/260035/">Czechia</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">5-2-1-2</td><td class="" data-col="oa"><em title="77">77</em></td><td class="" data-col="at"><em title="78">78</em></td><td class="" data-col="md"><em title="75">75</em></td><td class="" data-col="df"><em title="75">75</em></td><td class="" data-col="ip"><em>4</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18699/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18699/120.png 2x, https://cdn.sofifa.net/meta/team/18699/180.png 3x" src="https://cdn.sofifa.net/meta/team/18699/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18699/120.png 2x, https://cdn.sofifa.net/meta/team/18699/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1353/poland/260035/">Poland</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">3-4-2-1</td><td class="" data-col="oa"><em title="77">77</em></td><td class="" data-col="at"><em title="82">82</em></td><td class="" data-col="md"><em title="75">75</em></td><td class="" data-col="df"><em title="78">78</em></td><td class="" data-col="ip"><em>5</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18564/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18564/120.png 2x, https://cdn.sofifa.net/meta/team/18564/180.png 3x" src="https://cdn.sofifa.net/meta/team/18564/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18564/120.png 2x, https://cdn.sofifa.net/meta/team/18564/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1363/sweden/260035/">Sweden</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">5-4-1 Flat</td><td class="" data-col="oa"><em title="77">77</em></td><td class="" data-col="at"><em title="86">86</em></td><td class="" data-col="md"><em title="77">77</em></td><td class="" data-col="df"><em title="76">76</em></td><td class="" data-col="ip"><em>4</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18624/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18624/120.png 2x, https://cdn.sofifa.net/meta/team/18624/180.png 3x" src="https://cdn.sofifa.net/meta/team/18624/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18624/120.png 2x, https://cdn.sofifa.net/meta/team/18624/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1366/ukraine/260035/">Ukraine</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-1-4-1</td><td class="" data-col="oa"><em title="77">77</em></td><td class="" data-col="at"><em title="79">79</em></td><td class="" data-col="md"><em title="76">76</em></td><td class="" data-col="df"><em title="76">76</em></td><td class="" data-col="ip"><em>5</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18571/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18571/120.png 2x, https://cdn.sofifa.net/meta/team/18571/180.png 3x" src="https://cdn.sofifa.net/meta/team/18571/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18571/120.png 2x, https://cdn.sofifa.net/meta/team/18571/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1387/united-states/260035/">United States</a><br><img title="CONCACAF" alt="" src="https://cdn.sofifa.net/flags/concacaf.png" data-src="https://cdn.sofifa.net/flags/concacaf.png" data-srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=3" rel="nofollow" class="sub">CONCACAF</a></td>
+<td class="" data-col="fm">4-4-1-1 Midfield</td><td class="" data-col="oa"><em title="77">77</em></td><td class="" data-col="at"><em title="77">77</em></td><td class="" data-col="md"><em title="79">79</em></td><td class="" data-col="df"><em title="77">77</em></td><td class="" data-col="ip"><em>6</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18597/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18597/120.png 2x, https://cdn.sofifa.net/meta/team/18597/180.png 3x" src="https://cdn.sofifa.net/meta/team/18597/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18597/120.png 2x, https://cdn.sofifa.net/meta/team/18597/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1411/japan/260035/">Japan</a><br><img title="AFC" alt="" src="https://cdn.sofifa.net/flags/afc.png" data-src="https://cdn.sofifa.net/flags/afc.png" data-srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" data-was-processed="true"> <a href="/teams?as=1" rel="nofollow" class="sub">AFC</a></td>
+<td class="" data-col="fm">3-4-3 Flat</td><td class="" data-col="oa"><em title="77">77</em></td><td class="" data-col="at"><em title="78">78</em></td><td class="" data-col="md"><em title="78">78</em></td><td class="" data-col="df"><em title="77">77</em></td><td class="" data-col="ip"><em>5</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18706/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18706/120.png 2x, https://cdn.sofifa.net/meta/team/18706/180.png 3x" src="https://cdn.sofifa.net/meta/team/18706/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18706/120.png 2x, https://cdn.sofifa.net/meta/team/18706/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1359/scotland/260035/">Scotland</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="76">76</em></td><td class="" data-col="at"><em title="77">77</em></td><td class="" data-col="md"><em title="78">78</em></td><td class="" data-col="df"><em title="75">75</em></td><td class="" data-col="ip"><em>4</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18620/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18620/120.png 2x, https://cdn.sofifa.net/meta/team/18620/180.png 3x" src="https://cdn.sofifa.net/meta/team/18620/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18620/120.png 2x, https://cdn.sofifa.net/meta/team/18620/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111448/algeria/260035/">Algeria</a><br><img title="CAF" alt="" src="https://cdn.sofifa.net/flags/caf.png" data-src="https://cdn.sofifa.net/flags/caf.png" data-srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=2" rel="nofollow" class="sub">CAF</a></td>
+<td class="" data-col="fm">4-4-2 Holding</td><td class="" data-col="oa"><em title="76">76</em></td><td class="" data-col="at"><em title="75">75</em></td><td class="" data-col="md"><em title="76">76</em></td><td class="" data-col="df"><em title="76">76</em></td><td class="" data-col="ip"><em>3</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18573/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18573/120.png 2x, https://cdn.sofifa.net/meta/team/18573/180.png 3x" src="https://cdn.sofifa.net/meta/team/18573/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18573/120.png 2x, https://cdn.sofifa.net/meta/team/18573/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111465/ecuador/260035/">Ecuador</a><br><img title="CONMEBOL" alt="" src="https://cdn.sofifa.net/flags/conmebol.png" data-src="https://cdn.sofifa.net/flags/conmebol.png" data-srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" data-was-processed="true"> <a href="/teams?as=4" rel="nofollow" class="sub">CONMEBOL</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="76">76</em></td><td class="" data-col="at"><em title="73">73</em></td><td class="" data-col="md"><em title="76">76</em></td><td class="" data-col="df"><em title="79">79</em></td><td class="" data-col="ip"><em>5</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18576/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18576/120.png 2x, https://cdn.sofifa.net/meta/team/18576/180.png 3x" src="https://cdn.sofifa.net/meta/team/18576/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18576/120.png 2x, https://cdn.sofifa.net/meta/team/18576/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1386/mexico/260035/">Mexico</a><br><img title="CONCACAF" alt="" src="https://cdn.sofifa.net/flags/concacaf.png" data-src="https://cdn.sofifa.net/flags/concacaf.png" data-srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=3" rel="nofollow" class="sub">CONCACAF</a></td>
+<td class="" data-col="fm">4-3-3 Holding</td><td class="" data-col="oa"><em title="76">76</em></td><td class="" data-col="at"><em title="78">78</em></td><td class="" data-col="md"><em title="76">76</em></td><td class="" data-col="df"><em title="75">75</em></td><td class="" data-col="ip"><em>7</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18721/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18721/120.png 2x, https://cdn.sofifa.net/meta/team/18721/180.png 3x" src="https://cdn.sofifa.net/meta/team/18721/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18721/120.png 2x, https://cdn.sofifa.net/meta/team/18721/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1367/wales/260035/">Wales</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="75">75</em></td><td class="" data-col="at"><em title="74">74</em></td><td class="" data-col="md"><em title="76">76</em></td><td class="" data-col="df"><em title="74">74</em></td><td class="" data-col="ip"><em>3</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18723/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18723/120.png 2x, https://cdn.sofifa.net/meta/team/18723/180.png 3x" src="https://cdn.sofifa.net/meta/team/18723/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18723/120.png 2x, https://cdn.sofifa.net/meta/team/18723/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1375/paraguay/260035/">Paraguay</a><br><img title="CONMEBOL" alt="" src="https://cdn.sofifa.net/flags/conmebol.png" data-src="https://cdn.sofifa.net/flags/conmebol.png" data-srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/conmebol@2x.png 2x, https://cdn.sofifa.net/flags/conmebol@3x.png 3x" data-was-processed="true"> <a href="/teams?as=4" rel="nofollow" class="sub">CONMEBOL</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="75">75</em></td><td class="" data-col="at"><em title="75">75</em></td><td class="" data-col="md"><em title="75">75</em></td><td class="" data-col="df"><em title="76">76</em></td><td class="" data-col="ip"><em>4</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18572/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18572/120.png 2x, https://cdn.sofifa.net/meta/team/18572/180.png 3x" src="https://cdn.sofifa.net/meta/team/18572/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18572/120.png 2x, https://cdn.sofifa.net/meta/team/18572/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111455/canada/260035/">Canada</a><br><img title="CONCACAF" alt="" src="https://cdn.sofifa.net/flags/concacaf.png" data-src="https://cdn.sofifa.net/flags/concacaf.png" data-srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=3" rel="nofollow" class="sub">CONCACAF</a></td>
+<td class="" data-col="fm">4-4-2 Flat</td><td class="" data-col="oa"><em title="75">75</em></td><td class="" data-col="at"><em title="77">77</em></td><td class="" data-col="md"><em title="73">73</em></td><td class="" data-col="df"><em title="76">76</em></td><td class="" data-col="ip"><em>2</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18553/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18553/120.png 2x, https://cdn.sofifa.net/meta/team/18553/180.png 3x" src="https://cdn.sofifa.net/meta/team/18553/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18553/120.png 2x, https://cdn.sofifa.net/meta/team/18553/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111462/ghana/260035/">Ghana</a><br><img title="CAF" alt="" src="https://cdn.sofifa.net/flags/caf.png" data-src="https://cdn.sofifa.net/flags/caf.png" data-srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=2" rel="nofollow" class="sub">CAF</a></td>
+<td class="" data-col="fm">5-2-3</td><td class="" data-col="oa"><em title="75">75</em></td><td class="" data-col="at"><em title="78">78</em></td><td class="" data-col="md"><em title="75">75</em></td><td class="" data-col="df"><em title="73">73</em></td><td class="" data-col="ip"><em>5</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18567/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18567/120.png 2x, https://cdn.sofifa.net/meta/team/18567/180.png 3x" src="https://cdn.sofifa.net/meta/team/18567/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18567/120.png 2x, https://cdn.sofifa.net/meta/team/18567/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/974/korea-republic/260035/">Korea Republic</a><br><img title="AFC" alt="" src="https://cdn.sofifa.net/flags/afc.png" data-src="https://cdn.sofifa.net/flags/afc.png" data-srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" data-was-processed="true"> <a href="/teams?as=1" rel="nofollow" class="sub">AFC</a></td>
+<td class="" data-col="fm">3-4-2-1</td><td class="" data-col="oa"><em title="75">75</em></td><td class="" data-col="at"><em title="77">77</em></td><td class="" data-col="md"><em title="74">74</em></td><td class="" data-col="df"><em title="75">75</em></td><td class="" data-col="ip"><em>5</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18546/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18546/120.png 2x, https://cdn.sofifa.net/meta/team/18546/180.png 3x" src="https://cdn.sofifa.net/meta/team/18546/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18546/120.png 2x, https://cdn.sofifa.net/meta/team/18546/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111130/egypt/260035/">Egypt</a><br><img title="CAF" alt="" src="https://cdn.sofifa.net/flags/caf.png" data-src="https://cdn.sofifa.net/flags/caf.png" data-srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=2" rel="nofollow" class="sub">CAF</a></td>
+<td class="" data-col="fm">4-3-3 Attack</td><td class="" data-col="oa"><em title="74">74</em></td><td class="" data-col="at"><em title="78">78</em></td><td class="" data-col="md"><em title="74">74</em></td><td class="" data-col="df"><em title="70">70</em></td><td class="" data-col="ip"><em>4</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18654/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18654/120.png 2x, https://cdn.sofifa.net/meta/team/18654/180.png 3x" src="https://cdn.sofifa.net/meta/team/18654/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18654/120.png 2x, https://cdn.sofifa.net/meta/team/18654/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1355/republic-of-ireland/260035/">Republic of Ireland</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">5-4-1 Flat</td><td class="" data-col="oa"><em title="74">74</em></td><td class="" data-col="at"><em title="75">75</em></td><td class="" data-col="md"><em title="71">71</em></td><td class="" data-col="df"><em title="74">74</em></td><td class="" data-col="ip"><em>4</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18732/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18732/120.png 2x, https://cdn.sofifa.net/meta/team/18732/180.png 3x" src="https://cdn.sofifa.net/meta/team/18732/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18732/120.png 2x, https://cdn.sofifa.net/meta/team/18732/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1886/hungary/260035/">Hungary</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="74">74</em></td><td class="" data-col="at"><em title="77">77</em></td><td class="" data-col="md"><em title="74">74</em></td><td class="" data-col="df"><em title="74">74</em></td><td class="" data-col="ip"><em>4</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18552/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18552/120.png 2x, https://cdn.sofifa.net/meta/team/18552/180.png 3x" src="https://cdn.sofifa.net/meta/team/18552/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18552/120.png 2x, https://cdn.sofifa.net/meta/team/18552/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111545/congo-dr/260035/">Congo DR</a><br><img title="CAF" alt="" src="https://cdn.sofifa.net/flags/caf.png" data-src="https://cdn.sofifa.net/flags/caf.png" data-srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=2" rel="nofollow" class="sub">CAF</a></td>
+<td class="" data-col="fm">4-4-1-1 Midfield</td><td class="" data-col="oa"><em title="74">74</em></td><td class="" data-col="at"><em title="78">78</em></td><td class="" data-col="md"><em title="71">71</em></td><td class="" data-col="df"><em title="75">75</em></td><td class="" data-col="ip"><em>2</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18625/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18625/120.png 2x, https://cdn.sofifa.net/meta/team/18625/180.png 3x" src="https://cdn.sofifa.net/meta/team/18625/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18625/120.png 2x, https://cdn.sofifa.net/meta/team/18625/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/105013/bosnia-and-herzegovina/260035/">Bosnia and Herzegovina</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-4-2 Flat</td><td class="" data-col="oa"><em title="73">73</em></td><td class="" data-col="at"><em title="76">76</em></td><td class="" data-col="md"><em title="70">70</em></td><td class="" data-col="df"><em title="72">72</em></td><td class="" data-col="ip"><em>3</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18638/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18638/120.png 2x, https://cdn.sofifa.net/meta/team/18638/180.png 3x" src="https://cdn.sofifa.net/meta/team/18638/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18638/120.png 2x, https://cdn.sofifa.net/meta/team/18638/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1356/romania/260035/">Romania</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-3-3 Attack</td><td class="" data-col="oa"><em title="73">73</em></td><td class="" data-col="at"><em title="72">72</em></td><td class="" data-col="md"><em title="72">72</em></td><td class="" data-col="df"><em title="72">72</em></td><td class="" data-col="ip"><em>5</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18562/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18562/120.png 2x, https://cdn.sofifa.net/meta/team/18562/180.png 3x" src="https://cdn.sofifa.net/meta/team/18562/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18562/120.png 2x, https://cdn.sofifa.net/meta/team/18562/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111114/saudi-arabia/260035/">Saudi Arabia</a><br><img title="AFC" alt="" src="https://cdn.sofifa.net/flags/afc.png" data-src="https://cdn.sofifa.net/flags/afc.png" data-srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" data-was-processed="true"> <a href="/teams?as=1" rel="nofollow" class="sub">AFC</a></td>
+<td class="" data-col="fm">4-5-1 Flat</td><td class="" data-col="oa"><em title="72">72</em></td><td class="" data-col="at"><em title="74">74</em></td><td class="" data-col="md"><em title="74">74</em></td><td class="" data-col="df"><em title="71">71</em></td><td class="" data-col="ip"><em>4</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18652/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18652/120.png 2x, https://cdn.sofifa.net/meta/team/18652/180.png 3x" src="https://cdn.sofifa.net/meta/team/18652/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18652/120.png 2x, https://cdn.sofifa.net/meta/team/18652/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111115/iran/260035/">Iran</a><br><img title="AFC" alt="" src="https://cdn.sofifa.net/flags/afc.png" data-src="https://cdn.sofifa.net/flags/afc.png" data-srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" data-was-processed="true"> <a href="/teams?as=1" rel="nofollow" class="sub">AFC</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="72">72</em></td><td class="" data-col="at"><em title="73">73</em></td><td class="" data-col="md"><em title="72">72</em></td><td class="" data-col="df"><em title="72">72</em></td><td class="" data-col="ip"><em>3</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18696/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18696/120.png 2x, https://cdn.sofifa.net/meta/team/18696/180.png 3x" src="https://cdn.sofifa.net/meta/team/18696/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18696/120.png 2x, https://cdn.sofifa.net/meta/team/18696/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/110081/northern-ireland/260035/">Northern Ireland</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">5-4-1 Flat</td><td class="" data-col="oa"><em title="71">71</em></td><td class="" data-col="at"><em title="66">66</em></td><td class="" data-col="md"><em title="70">70</em></td><td class="" data-col="df"><em title="70">70</em></td><td class="" data-col="ip"><em>2</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18635/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18635/120.png 2x, https://cdn.sofifa.net/meta/team/18635/180.png 3x" src="https://cdn.sofifa.net/meta/team/18635/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18635/120.png 2x, https://cdn.sofifa.net/meta/team/18635/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1341/iceland/260035/">Iceland</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">4-4-2 Flat</td><td class="" data-col="oa"><em title="71">71</em></td><td class="" data-col="at"><em title="68">68</em></td><td class="" data-col="md"><em title="73">73</em></td><td class="" data-col="df"><em title="69">69</em></td><td class="" data-col="ip"><em>3</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18554/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18554/120.png 2x, https://cdn.sofifa.net/meta/team/18554/180.png 3x" src="https://cdn.sofifa.net/meta/team/18554/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18554/120.png 2x, https://cdn.sofifa.net/meta/team/18554/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1391/tunisia/260035/">Tunisia</a><br><img title="CAF" alt="" src="https://cdn.sofifa.net/flags/caf.png" data-src="https://cdn.sofifa.net/flags/caf.png" data-srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=2" rel="nofollow" class="sub">CAF</a></td>
+<td class="" data-col="fm">4-2-3-1 Narrow</td><td class="" data-col="oa"><em title="71">71</em></td><td class="" data-col="at"><em title="70">70</em></td><td class="" data-col="md"><em title="72">72</em></td><td class="" data-col="df"><em title="72">72</em></td><td class="" data-col="ip"><em>3</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18730/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18730/120.png 2x, https://cdn.sofifa.net/meta/team/18730/180.png 3x" src="https://cdn.sofifa.net/meta/team/18730/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18730/120.png 2x, https://cdn.sofifa.net/meta/team/18730/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1415/australia/260035/">Australia</a><br><img title="AFC" alt="" src="https://cdn.sofifa.net/flags/afc.png" data-src="https://cdn.sofifa.net/flags/afc.png" data-srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" data-was-processed="true"> <a href="/teams?as=1" rel="nofollow" class="sub">AFC</a></td>
+<td class="" data-col="fm">4-4-2 Flat</td><td class="" data-col="oa"><em title="71">71</em></td><td class="" data-col="at"><em title="69">69</em></td><td class="" data-col="md"><em title="71">71</em></td><td class="" data-col="df"><em title="70">70</em></td><td class="" data-col="ip"><em>5</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18570/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18570/120.png 2x, https://cdn.sofifa.net/meta/team/18570/180.png 3x" src="https://cdn.sofifa.net/meta/team/18570/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18570/120.png 2x, https://cdn.sofifa.net/meta/team/18570/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/1334/finland/260035/">Finland</a><br><img title="UEFA" alt="" src="https://cdn.sofifa.net/flags/uefa.png" data-src="https://cdn.sofifa.net/flags/uefa.png" data-srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/uefa@2x.png 2x, https://cdn.sofifa.net/flags/uefa@3x.png 3x" data-was-processed="true"> <a href="/teams?as=6" rel="nofollow" class="sub">UEFA</a></td>
+<td class="" data-col="fm">3-4-2-1</td><td class="" data-col="oa"><em title="70">70</em></td><td class="" data-col="at"><em title="75">75</em></td><td class="" data-col="md"><em title="69">69</em></td><td class="" data-col="df"><em title="64">64</em></td><td class="" data-col="ip"><em>2</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18823/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18823/120.png 2x, https://cdn.sofifa.net/meta/team/18823/180.png 3x" src="https://cdn.sofifa.net/meta/team/18823/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18823/120.png 2x, https://cdn.sofifa.net/meta/team/18823/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111456/cabo-verde/260035/">Cabo Verde</a><br><img title="CAF" alt="" src="https://cdn.sofifa.net/flags/caf.png" data-src="https://cdn.sofifa.net/flags/caf.png" data-srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=2" rel="nofollow" class="sub">CAF</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="70">70</em></td><td class="" data-col="at"><em title="69">69</em></td><td class="" data-col="md"><em title="69">69</em></td><td class="" data-col="df"><em title="71">71</em></td><td class="" data-col="ip"><em>1</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18613/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18613/120.png 2x, https://cdn.sofifa.net/meta/team/18613/180.png 3x" src="https://cdn.sofifa.net/meta/team/18613/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18613/120.png 2x, https://cdn.sofifa.net/meta/team/18613/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111473/new-zealand/260035/">New Zealand</a><br><img title="OFC" alt="" src="https://cdn.sofifa.net/flags/ofc.png" data-src="https://cdn.sofifa.net/flags/ofc.png" data-srcset="https://cdn.sofifa.net/flags/ofc@2x.png 2x, https://cdn.sofifa.net/flags/ofc@3x.png 3x" class="flag error" width="21" height="16" srcset="https://cdn.sofifa.net/flags/ofc@2x.png 2x, https://cdn.sofifa.net/flags/ofc@3x.png 3x" data-was-processed="true"> <a href="/teams?as=5" rel="nofollow" class="sub">OFC</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="70">70</em></td><td class="" data-col="at"><em title="74">74</em></td><td class="" data-col="md"><em title="69">69</em></td><td class="" data-col="df"><em title="69">69</em></td><td class="" data-col="ip"><em>2</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18717/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18717/120.png 2x, https://cdn.sofifa.net/meta/team/18717/180.png 3x" src="https://cdn.sofifa.net/meta/team/18717/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18717/120.png 2x, https://cdn.sofifa.net/meta/team/18717/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111475/panama/260035/">Panama</a><br><img title="CONCACAF" alt="" src="https://cdn.sofifa.net/flags/concacaf.png" data-src="https://cdn.sofifa.net/flags/concacaf.png" data-srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=3" rel="nofollow" class="sub">CONCACAF</a></td>
+<td class="" data-col="fm">5-4-1 Flat</td><td class="" data-col="oa"><em title="70">70</em></td><td class="" data-col="at"><em title="70">70</em></td><td class="" data-col="md"><em title="70">70</em></td><td class="" data-col="df"><em title="69">69</em></td><td class="" data-col="ip"><em>1</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18555/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18555/120.png 2x, https://cdn.sofifa.net/meta/team/18555/180.png 3x" src="https://cdn.sofifa.net/meta/team/18555/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18555/120.png 2x, https://cdn.sofifa.net/meta/team/18555/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111099/south-africa/260035/">South Africa</a><br><img title="CAF" alt="" src="https://cdn.sofifa.net/flags/caf.png" data-src="https://cdn.sofifa.net/flags/caf.png" data-srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/caf@2x.png 2x, https://cdn.sofifa.net/flags/caf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=2" rel="nofollow" class="sub">CAF</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="70">70</em></td><td class="" data-col="at"><em title="70">70</em></td><td class="" data-col="md"><em title="69">69</em></td><td class="" data-col="df"><em title="70">70</em></td><td class="" data-col="ip"><em>4</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18705/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18705/120.png 2x, https://cdn.sofifa.net/meta/team/18705/180.png 3x" src="https://cdn.sofifa.net/meta/team/18705/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18705/120.png 2x, https://cdn.sofifa.net/meta/team/18705/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111510/indonesia/260035/">Indonesia</a><br><img title="AFC" alt="" src="https://cdn.sofifa.net/flags/afc.png" data-src="https://cdn.sofifa.net/flags/afc.png" data-srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" data-was-processed="true"> <a href="/teams?as=1" rel="nofollow" class="sub">AFC</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="69">69</em></td><td class="" data-col="at"><em title="64">64</em></td><td class="" data-col="md"><em title="66">66</em></td><td class="" data-col="df"><em title="71">71</em></td><td class="" data-col="ip"><em>1</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18544/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18544/120.png 2x, https://cdn.sofifa.net/meta/team/18544/180.png 3x" src="https://cdn.sofifa.net/meta/team/18544/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18544/120.png 2x, https://cdn.sofifa.net/meta/team/18544/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111527/qatar/260035/">Qatar</a><br><img title="AFC" alt="" src="https://cdn.sofifa.net/flags/afc.png" data-src="https://cdn.sofifa.net/flags/afc.png" data-srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" data-was-processed="true"> <a href="/teams?as=1" rel="nofollow" class="sub">AFC</a></td>
+<td class="" data-col="fm">4-2-1-3</td><td class="" data-col="oa"><em title="69">69</em></td><td class="" data-col="at"><em title="73">73</em></td><td class="" data-col="md"><em title="68">68</em></td><td class="" data-col="df"><em title="67">67</em></td><td class="" data-col="ip"><em>3</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18804/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18804/120.png 2x, https://cdn.sofifa.net/meta/team/18804/180.png 3x" src="https://cdn.sofifa.net/meta/team/18804/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18804/120.png 2x, https://cdn.sofifa.net/meta/team/18804/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/112048/haiti/260035/">Haiti</a><br><img title="CONCACAF" alt="" src="https://cdn.sofifa.net/flags/concacaf.png" data-src="https://cdn.sofifa.net/flags/concacaf.png" data-srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=3" rel="nofollow" class="sub">CONCACAF</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="69">69</em></td><td class="" data-col="at"><em title="70">70</em></td><td class="" data-col="md"><em title="69">69</em></td><td class="" data-col="df"><em title="69">69</em></td><td class="" data-col="ip"><em>1</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18745/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18745/120.png 2x, https://cdn.sofifa.net/meta/team/18745/180.png 3x" src="https://cdn.sofifa.net/meta/team/18745/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18745/120.png 2x, https://cdn.sofifa.net/meta/team/18745/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111485/uzbekistan/260035/">Uzbekistan</a><br><img title="AFC" alt="" src="https://cdn.sofifa.net/flags/afc.png" data-src="https://cdn.sofifa.net/flags/afc.png" data-srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" data-was-processed="true"> <a href="/teams?as=1" rel="nofollow" class="sub">AFC</a></td>
+<td class="" data-col="fm">3-4-3 Flat</td><td class="" data-col="oa"><em title="68">68</em></td><td class="" data-col="at"><em title="69">69</em></td><td class="" data-col="md"><em title="67">67</em></td><td class="" data-col="df"><em title="71">71</em></td><td class="" data-col="ip"><em>1</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18910/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18910/120.png 2x, https://cdn.sofifa.net/meta/team/18910/180.png 3x" src="https://cdn.sofifa.net/meta/team/18910/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18910/120.png 2x, https://cdn.sofifa.net/meta/team/18910/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/112054/curacao/260035/">Curacao</a><br><img title="CONCACAF" alt="" src="https://cdn.sofifa.net/flags/concacaf.png" data-src="https://cdn.sofifa.net/flags/concacaf.png" data-srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/concacaf@2x.png 2x, https://cdn.sofifa.net/flags/concacaf@3x.png 3x" data-was-processed="true"> <a href="/teams?as=3" rel="nofollow" class="sub">CONCACAF</a></td>
+<td class="" data-col="fm">4-2-3-1 Wide</td><td class="" data-col="oa"><em title="68">68</em></td><td class="" data-col="at"><em title="66">66</em></td><td class="" data-col="md"><em title="69">69</em></td><td class="" data-col="df"><em title="69">69</em></td><td class="" data-col="ip"><em>1</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18559/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18559/120.png 2x, https://cdn.sofifa.net/meta/team/18559/180.png 3x" src="https://cdn.sofifa.net/meta/team/18559/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18559/120.png 2x, https://cdn.sofifa.net/meta/team/18559/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111513/jordan/260035/">Jordan</a><br><img title="AFC" alt="" src="https://cdn.sofifa.net/flags/afc.png" data-src="https://cdn.sofifa.net/flags/afc.png" data-srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" data-was-processed="true"> <a href="/teams?as=1" rel="nofollow" class="sub">AFC</a></td>
+<td class="" data-col="fm">4-4-2 Flat</td><td class="" data-col="oa"><em title="66">66</em></td><td class="" data-col="at"><em title="66">66</em></td><td class="" data-col="md"><em title="67">67</em></td><td class="" data-col="df"><em title="66">66</em></td><td class="" data-col="ip"><em>1</em></td><td></td>
+</tr><tr>
+<td class="a1">
+<figure class="avatar">
+<img alt="" class="team loaded" data-src="https://cdn.sofifa.net/meta/team/18600/60.png" data-srcset="https://cdn.sofifa.net/meta/team/18600/120.png 2x, https://cdn.sofifa.net/meta/team/18600/180.png 3x" src="https://cdn.sofifa.net/meta/team/18600/60.png" data-root="https://cdn.sofifa.net/" data-type="team" srcset="https://cdn.sofifa.net/meta/team/18600/120.png 2x, https://cdn.sofifa.net/meta/team/18600/180.png 3x" data-was-processed="true">
+</figure>
+</td>
+<td class="s20">
+<a href="/team/111512/iraq/260035/">Iraq</a><br><img title="AFC" alt="" src="https://cdn.sofifa.net/flags/afc.png" data-src="https://cdn.sofifa.net/flags/afc.png" data-srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" class="flag loaded" width="21" height="16" srcset="https://cdn.sofifa.net/flags/afc@2x.png 2x, https://cdn.sofifa.net/flags/afc@3x.png 3x" data-was-processed="true"> <a href="/teams?as=1" rel="nofollow" class="sub">AFC</a></td>
+<td class="" data-col="fm">4-4-2 Flat</td><td class="" data-col="oa"><em title="65">65</em></td><td class="" data-col="at"><em title="63">63</em></td><td class="" data-col="md"><em title="66">66</em></td><td class="" data-col="df"><em title="64">64</em></td><td class="" data-col="ip"><em>2</em></td><td></td>
+</tr></tbody>
+</table>
