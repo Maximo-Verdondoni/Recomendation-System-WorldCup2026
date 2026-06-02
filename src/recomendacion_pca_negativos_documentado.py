@@ -17,7 +17,7 @@ Lógica central del módulo:
     (percentil + mínimo fijo) para garantizar distribución razonable.
 
 Dependencias:
-    pandas, numpy, matplotlib, seaborn
+    pandas, numpy, matplotlib, seaborn, os
 
 Input:
     data/matriz_partidos_scaled_pca.csv — Matriz de features escaladas con PCA
@@ -29,6 +29,7 @@ Columnas requeridas en el DataFrame de entrada:
     PC1_Disparidad_scaled, PC2_Calidad_scaled
 """
 
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -279,9 +280,16 @@ def recomendar_partidos(df_partidos: pd.DataFrame, perfil_usuario: dict) -> pd.D
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
 
+    # 1. Buscamos dónde está ubicado EXACTAMENTE este archivo script
+    directorio_script = os.path.dirname(os.path.abspath(__file__))
+    
+    # 2. Construimos la ruta absoluta hacia la carpeta 'data'
+    ruta_csv = os.path.join(directorio_script, "..", "data", "matriz_partidos_scaled_pca.csv")
+    ruta_csv = os.path.abspath(ruta_csv)
+
     # Cargar la matriz de partidos final (con features ELO + PCA escaladas)
     matriz_partidos = pd.read_csv(
-        "../data/matriz_partidos_scaled_pca.csv",
+        ruta_csv,
         index_col="id_partido"
     )
 

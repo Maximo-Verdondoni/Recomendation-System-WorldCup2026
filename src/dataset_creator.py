@@ -36,6 +36,7 @@ Columnas generadas en el output:
     PC2_Calidad_scaled    : float [0, 1]  — Calidad táctica media escalada
 """
 
+import os
 import numpy as np
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -46,10 +47,13 @@ from sklearn.decomposition import PCA
 # ─────────────────────────────────────────────────────────────────────────────
 # Constantes: rutas de archivos
 # ─────────────────────────────────────────────────────────────────────────────
-PATH_FIFA_HTML       = "data/txt/fifa26_ratings_selecciones.txt"
-PATH_PARTIDOS        = "data/matriz_partidos.csv"
-PATH_PARTIDOS_SCALED = "data/matriz_partidos_scaled.csv"
-PATH_OUTPUT          = "data/matriz_partidos_scaled_pca.csv"
+
+_DIR = os.path.dirname(os.path.abspath(__file__))
+
+PATH_FIFA_HTML       = os.path.abspath(os.path.join(_DIR, "..", "data", "txt", "fifa26_ratings_selecciones.txt"))
+PATH_PARTIDOS        = os.path.abspath(os.path.join(_DIR, "..", "data", "matriz_partidos.csv"))
+PATH_PARTIDOS_SCALED = os.path.abspath(os.path.join(_DIR, "..", "data", "matriz_partidos_scaled.csv"))
+PATH_OUTPUT          = os.path.abspath(os.path.join(_DIR, "..", "data", "matriz_partidos_scaled_pca.csv"))
 
 # Columnas tácticas que entran al PCA
 FEATURES_PCA = [
