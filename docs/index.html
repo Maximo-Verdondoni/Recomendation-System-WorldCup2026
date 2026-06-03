@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Tiempo, Tu Mundial — Recomendador FIFA 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="progress-container" class="hidden">
+        <div id="progress-bar"></div>
+    </div>
+
+    <main id="app-container">
+        
+        <section id="phase-landing" class="phase active">
+            <div class="landing-content">
+                <div class="logo-badge">🏆 FIFA World Cup 2026</div>
+                <h1 class="landing-title">Tu Tiempo,<br><span class="accent-text">Tu Mundial</span></h1>
+                <p class="landing-subtitle">El recomendador premium de partidos para la fase de grupos. Sincronizá tus horarios disponibles, definí tus preferencias de nivel y descubrí qué encuentros son imperdibles para vos.</p>
+                <button id="btn-start" class="btn-primary">Empezar</button>
+            </div>
+        </section>
+
+        <section id="phase-onboarding" class="phase">
+            <div class="steps-wrapper">
+                
+                <div id="step-1" class="step-content active">
+                    <button class="btn-back-arrow type-to-landing">← Volver</button>
+                    <div class="step-header">
+                        <h2 class="step-title">¿Cuándo podés ver los partidos?</h2>
+                        <p class="step-subtitle">Seleccioná los bloques horarios en los que estás disponible haciendo clic o arrastrando sobre la grilla.</p>
+                    </div>
+                    <div class="grid-scroll-container">
+                        <div id="availability-grid" class="availability-grid"></div>
+                    </div>
+                    <div class="step-navigation">
+                        <button class="btn-primary next-step-trigger">Continuar</button>
+                    </div>
+                </div>
+
+                <div id="step-2" class="step-content">
+                    <button class="btn-back-arrow prev-step-trigger">← Volver</button>
+                    <div class="step-header">
+                        <h2 class="step-title">¿Tenés alguna selección favorita que quieras seguir?</h2>
+                        <p class="step-subtitle">Te avisaremos con prioridad cuando juegue tu equipo elegido durante la fase de grupos.</p>
+                    </div>
+                    <div class="dropdown-container">
+                        <select id="select-nacionalidad" class="premium-select"></select>
+                    </div>
+                    <div class="step-navigation">
+                        <button class="btn-primary next-step-trigger">Continuar</button>
+                    </div>
+                </div>
+
+                <div id="step-3" class="step-content">
+                    <button class="btn-back-arrow prev-step-trigger">← Volver</button>
+                    <div class="step-header">
+                        <h2 class="step-title">¿Qué tanto valorás el nivel de las selecciones?</h2>
+                        <p class="step-subtitle">Ajustá el control según tus preferencias de jerarquía futbolística.</p>
+                    </div>
+                    <div class="slider-row-container">
+                        <div class="slider-side-text text-left">Me interesan<br>selecciones<br>exóticas</div>
+                        <div class="slider-center-core">
+                            <div class="slider-center-text">Me es<br>indiferente</div>
+                            <input type="range" id="slider-calidad" min="-100" max="100" value="0" class="premium-slider">
+                        </div>
+                        <div class="slider-side-text text-right">Me interesan<br>selecciones<br>grandes</div>
+                    </div>
+                    <div class="step-navigation">
+                        <button class="btn-primary next-step-trigger">Continuar</button>
+                    </div>
+                </div>
+
+                <div id="step-4" class="step-content">
+                    <button class="btn-back-arrow prev-step-trigger">← Volver</button>
+                    <div class="step-header">
+                        <h2 class="step-title">¿Qué tanta importancia le das a que el partido sea parejo?</h2>
+                        <p class="step-subtitle">Ajustá el control según tu preferencia por la paridad competitiva.</p>
+                    </div>
+                    <div class="slider-row-container">
+                        <div class="slider-side-text text-left">Me interesan<br>partidos muy<br>disparejos</div>
+                        <div class="slider-center-core">
+                            <div class="slider-center-text">Me es<br>indiferente</div>
+                            <input type="range" id="slider-paridad" min="-100" max="100" value="0" class="premium-slider">
+                        </div>
+                        <div class="slider-side-text text-right">Me interesan<br>partidos muy<br>parejos</div>
+                    </div>
+                    <div class="step-navigation">
+                        <button class="btn-primary next-step-trigger">Ver mis recomendaciones</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="phase-loading" class="phase">
+            <div class="loading-content-wrapper">
+                <h2 class="loading-main-title">Calculando tus recomendaciones...</h2>
+                <div class="pulsing-dots">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+                <p class="loading-small-note">Analizando 72 partidos según tu perfil táctico y disponibilidad</p>
+            </div>
+        </section>
+
+        <section id="phase-results" class="phase">
+            <header class="results-main-header">
+                <h1 class="results-title">🏆 Tus recomendaciones — Mundial 2026</h1>
+                <p id="profile-summary-text" class="results-summary-line">Cargando perfil...</p>
+                
+                <div class="badges-row-summary">
+                    <div class="badge-count badge-imperdible">🌟 Imperdible: <span id="count-imperdible">0</span></div>
+                    <div class="badge-count badge-valepena">📺 Vale la pena: <span id="count-valepena">0</span></div>
+                    <div class="badge-count badge-resumen">📱 Ver resumen: <span id="count-resumen">0</span></div>
+                </div>
+            </header>
+
+            <div class="table-responsive-wrapper">
+                <table id="recommendations-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="index">#</th>
+                            <th data-sort="Categoria">Categoría</th>
+                            <th data-sort="Partido">Partido</th>
+                            <th data-sort="match_hora_utc">Fecha y hora (hora UTC) ↕</th>
+                            <th data-sort="Score_Recomendacion" class="active-sort desc">Score ↕</th>
+                            <th data-sort="feature_disponibilidad">Disponibilidad</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-results-body">
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="results-footer-actions">
+                <a href="#" id="link-reset-onboarding" class="reset-link">🔄 Volver a configurar</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
