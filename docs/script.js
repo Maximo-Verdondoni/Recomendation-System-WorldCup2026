@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const diasSemanaLargos = {
-        0: 'Domingo', 1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado'
+        0: 'Dom', 1: 'Lun', 2: 'Mar', 3: 'Mié', 4: 'Jue', 5: 'Vie', 6: 'Sáb'
     };
 
     const mesesLargos = {
@@ -261,32 +261,37 @@ document.addEventListener('DOMContentLoaded', () => {
         let calculados = partidos.map(partido => {
             const item = { ...partido };
 
-            // --- MANEJO DE FECHA Y HORA BASADO EN LAS NUEVAS COLUMNAS DEL CSV ---
-            // Construimos la fecha base UTC combinando tus nuevas columnas 'date' y 'time_utc'
+            // 1. Reconstrucción de la fecha base UTC desde tu CSV de Python
             const stringTimestampUtc = `${item.date}T${item.time_utc}Z`;
             const dateObjetoUtc = new Date(stringTimestampUtc);
 
-            // Calculamos el timestamp absoluto local restando el offset del cliente de forma segura
+            // 2. Cálculo del timestamp absoluto local del cliente
             const localTimestampMs = dateObjetoUtc.getTime() - appState.clientTimezoneOffsetMs;
             const dateObjetoLocal = new Date(localTimestampMs);
 
-            // Extraemos los valores correspondientes al huso local del cliente
+            // 3. Extracción de parámetros locales exactos
             const localHour1 = dateObjetoLocal.getUTCHours(); 
             const localHour2 = (localHour1 + 1) % 24;
 
-            // Conseguimos el día de la semana adaptado al grid de agenda (0=Lun ... 6=Dom)
-            // getUTCDay devuelve 0=Dom, 1=Lun ... 6=Sáb, por lo que re-mapeamos:
+            // getUTCDay() devuelve: 0=Domingo, 1=Lunes, 2=Martes, 3=Miércoles, 4=Jueves, 5=Viernes, 6=Sábado
             const dayIndexNative = dateObjetoLocal.getUTCDay();
+            
+            // Re-mapeo para tu grilla horaria de la agenda (0=Lun ... 6=Dom)
             const localGridDay1 = dayIndexNative === 0 ? 6 : dayIndexNative - 1;
             const localGridDay2 = localHour2 < localHour1 ? (localGridDay1 + 1) % 7 : localGridDay1;
 
-            // Almacenamos parámetros locales legibles directamente en el objeto de la fila
-            item['local_timestamp'] = localTimestampMs; // Clave para ordenamiento cronológico preciso
+            // Guardamos la data local para renderizar la tabla
+            item['local_timestamp'] = localTimestampMs;
             item['local_hour_1'] = localHour1;
             item['local_day_name'] = diasSemanaLargos[dayIndexNative];
             item['local_day_num'] = dateObjetoLocal.getUTCDate();
             item['local_month_name'] = mesesLargos[dateObjetoLocal.getUTCMonth()];
 
+            // 4. CORRECCIÓN CRÍTICA: Recalcular si el partido es fin de semana REAL para el usuario
+            // El boost se aplica SI Y SOLO SI para el cliente el partido cae Sábado (6) o Domingo (0)
+            const isWeekendLocal = (dayIndexNative === 6 || dayIndexNative === 0) ? 1.0 : 0.0;
+
+            // 5. Evaluación de disponibilidad en la agenda del cliente
             const listaDia1 = appState.horarioLibre[localGridDay1] || [];
             const listaDia2 = appState.horarioLibre[localGridDay2] || [];
 
@@ -299,6 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             item['feature_disponibilidad'] = disp;
 
+            // 6. Coincidencia de Selección favorita
             const juegaNac = (item.home_team === favUsuario || item.away_team === favUsuario) ? 1.0 : 0.0;
             item['feature_nacionalidad'] = juegaNac;
 
@@ -308,13 +314,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 return w * (s > 0 ? featDirecta : featInversa);
             }
 
+            // 7. Ecuación Lineal Modificada: Cambiamos item['is_weekend'] por nuestro isWeekendLocal recalculado
             item['Score_Recomendacion'] = (
                 aplicarLogicaJS('w_nacionalidad', item['feature_nacionalidad'], 1.0 - item['feature_nacionalidad']) +
                 aplicarLogicaJS('w_calidad_elo', item['ELO_match_rating_scaled'], 1.0 - item['ELO_match_rating_scaled']) +
                 aplicarLogicaJS('w_paridad_elo', 1.0 - item['ELO_diff_scaled'], item['ELO_diff_scaled']) +
                 aplicarLogicaJS('w_calidad_fifa', item['PC2_Calidad_scaled'], 1.0 - item['PC2_Calidad_scaled']) +
                 aplicarLogicaJS('w_paridad_fifa', 1.0 - item['PC1_Disparidad_scaled'], item['PC1_Disparidad_scaled']) +
-                aplicarLogicaJS('w_fin_de_semana', item['is_weekend'], 1.0 - item['is_weekend'])
+                aplicarLogicaJS('w_fin_de_semana', isWeekendLocal, 1.0 - isWeekendLocal) // <- ¡Acá entra el valor corregido!
             );
 
             return item;
@@ -342,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const qAlta = getQuantile(scoresOrdenados, 0.85);
         const qMedia = getQuantile(scoresOrdenados, 0.50);
-        const pAlta = Math.max(qAlta, 0.65);
+        const pAlta = Math.min(qAlta, 0.75);
         const pMedia = Math.max(qMedia, 0.45);
 
         calculados.forEach(item => {
