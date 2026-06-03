@@ -53,7 +53,7 @@ _DIR = os.path.dirname(os.path.abspath(__file__))
 PATH_FIFA_HTML       = os.path.abspath(os.path.join(_DIR, "..", "data", "txt", "fifa26_ratings_selecciones.txt"))
 PATH_PARTIDOS        = os.path.abspath(os.path.join(_DIR, "..", "data", "matriz_partidos.csv"))
 PATH_PARTIDOS_SCALED = os.path.abspath(os.path.join(_DIR, "..", "data", "matriz_partidos_scaled.csv"))
-PATH_OUTPUT          = os.path.abspath(os.path.join(_DIR, "..", "data", "matriz_partidos_scaled_pca.csv"))
+PATH_OUTPUT          = os.path.abspath(os.path.join(_DIR, "..", "data", "matriz_partidos_scaled_pca_new.csv"))
 
 # Columnas tácticas que entran al PCA
 FEATURES_PCA = [
