@@ -296,8 +296,8 @@ if __name__ == "__main__":
     # ── Perfil de ejemplo: fanático del fútbol parejo, mira de noche ─────────
     # Calidad y paridad se expresan como una sola variable que el usuario setea,
     # y se divide por 2 entre ELO y FIFA para no sobreponderar ninguna fuente.
-    peso_calidad = 80
-    peso_paridad = 60
+    peso_calidad = 100
+    peso_paridad = 100
 
     usuario_ejemplo = {
         "nacionalidad": "Argentina",
@@ -317,7 +317,7 @@ if __name__ == "__main__":
             3: [18, 19, 20, 21, 22],
             4: [18, 19, 20, 21, 22],
             5: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
-            6: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+            6: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,23],
         }
     }
 

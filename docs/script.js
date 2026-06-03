@@ -6,42 +6,59 @@ document.addEventListener('DOMContentLoaded', () => {
         horarioLibre: {
             0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: []
         },
-        nacionalidad: "",
+        nacionalidad: "", 
         w_calidad_elo: 0,
         w_calidad_fifa: 0,
         w_paridad_elo: 0,
         w_paridad_fifa: 0,
         
-        // DETECCIÓN AUTOMÁTICA DE ZONA HORARIA DEL USUARIO
-        // getTimezoneOffset() devuelve los minutos en negativo para zonas Occidentales, por eso dividimos por -60
-        utcOffset: new Date().getTimezoneOffset() / -60,
+        // Offset dinámico del cliente en minutos convertido a milisegundos para las operaciones nativas
+        clientTimezoneOffsetMs: new Date().getTimezoneOffset() * 60 * 1000,
 
         partidosData: [],
         partidosRecomendados: [],
-        currentSortField: 'Score_Recomendacion',
-        currentSortOrder: 'desc'
+        
+        currentSortField: 'recommendation_order',
+        currentSortOrder: 'asc'
     };
 
-    // Constante del algoritmo de tu modelo
-    const PESO_HORARIO_LIBRE = 20.0;
+    const PESO_FIN_DE_SEMANA = 10.0;
 
-    // Países del Mundial 2026
-    const paisesMundial = [
-        "Alemania", "Angola", "Arabia Saudita", "Argelia", "Argentina", "Australia", 
-        "Austria", "Bélgica", "Brasil", "Camerún", "Canadá", "Chile", "Colombia", 
-        "Corea del Sur", "Costa de Marfil", "Croacia", "Dinamarca", "Ecuador", 
-        "Egipto", "Escocia", "España", "Estados Unidos", "Francia", "Gales", 
-        "Ghana", "Irán", "Irlanda", "Italia", "Japón", "Marruecos", "México", 
-        "Nigeria", "Nueva Zelanda", "Países Bajos", "Panamá", "Perú", "Polonia", 
-        "Portugal", "República Checa", "Senegal", "Serbia", "Suecia", "Suiza", 
-        "Túnez", "Turquía", "Uruguay", "Uzbekistán", "Venezuela"
+    const listadoPaisesEspanol = [
+        "Corea del Sur", "México", "Chequia", "Sudáfrica", "Canadá", "Suiza",
+        "Catar", "Bosnia-Herzegovina", "Brasil", "Escocia", "Haití", "Marruecos",
+        "Australia", "Estados Unidos", "Turquía", "Paraguay", "Ecuador", "Alemania",
+        "Costa de Marfil", "Curazao", "Países Bajos", "Japón", "Suecia", "Túnez",
+        "Irán", "Bélgica", "Egipto", "Nueva Zelanda", "España", "Uruguay",
+        "Arabia Saudita", "Cabo Verde", "Francia", "Senegal", "Irak", "Noruega",
+        "Austria", "Argentina", "Argelia", "Jordania", "Portugal", "Colombia",
+        "Uzbekistán", "Congo RD", "Panamá", "Inglaterra", "Ghana", "Croacia"
     ];
 
-    const diasSemanaLargos = {
-        0: 'Lun', 1: 'Mar', 2: 'Mié', 3: 'Jue', 4: 'Vie', 5: 'Sáb', 6: 'Dom'
+    const diccionarioPaises = {
+        "Corea del Sur": "Korea Republic", "México": "Mexico", "Chequia": "Czechia",
+        "Sudáfrica": "South Africa", "Canadá": "Canada", "Suiza": "Switzerland",
+        "Catar": "Qatar", "Bosnia-Herzegovina": "Bosnia-Herzegovina", "Brasil": "Brazil",
+        "Escocia": "Scotland", "Haití": "Haiti", "Marruecos": "Morocco", "Australia": "Australia",
+        "Estados Unidos": "USA", "Turquía": "Turkey", "Paraguay": "Paraguay", "Ecuador": "Ecuador",
+        "Alemania": "Germany", "Costa de Marfil": "Côte d'Ivoire", "Curazao": "Curaçao",
+        "Países Bajos": "Netherlands", "Japón": "Japan", "Suecia": "Sweden", "Túnez": "Tunisia",
+        "Irán": "IR Iran", "Bélgica": "Belgium", "Egipto": "Egypt", "Nueva Zelanda": "New Zealand",
+        "España": "Spain", "Uruguay": "Uruguay", "Arabia Saudita": "Saudi Arabia",
+        "Cabo Verde": "Cabo Verde", "Francia": "France", "Senegal": "Senegal", "Irak": "Iraq",
+        "Noruega": "Norway", "Austria": "Austria", "Argentina": "Argentina", "Argelia": "Algeria",
+        "Jordania": "Jordan", "Portugal": "Portugal", "Colombia": "Colombia", "Uzbekistán": "Uzbekistan",
+        "Congo RD": "Congo DR", "Panamá": "Panama", "Inglaterra": "England", "Ghana": "Ghana", "Croacia": "Croatia"
     };
 
-    // Elementos Interfaz
+    const diasSemanaLargos = {
+        0: 'Domingo', 1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado'
+    };
+
+    const mesesLargos = {
+        5: 'Junio', 6: 'Julio'
+    };
+
     const btnStart = document.getElementById('btn-start');
     const progressContainer = document.getElementById('progress-container');
     const progressBar = document.getElementById('progress-bar');
@@ -95,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     appState.currentSortOrder = appState.currentSortOrder === 'asc' ? 'desc' : 'asc';
                 } else {
                     appState.currentSortField = sortField;
-                    appState.currentSortOrder = 'desc';
+                    appState.currentSortOrder = (sortField === 'Score_Recomendacion' || sortField === 'feature_disponibilidad') ? 'desc' : 'asc';
                 }
                 
                 document.querySelectorAll('#recommendations-table th').forEach(h => h.classList.remove('active-sort', 'asc', 'desc'));
@@ -112,8 +129,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const defaultOption = document.createElement('option');
         defaultOption.value = ""; defaultOption.textContent = "Ninguno / Soy neutral";
         selectNacionalidad.appendChild(defaultOption);
-        paisesMundial.forEach(c => {
-            const o = document.createElement('option'); o.value = c; o.textContent = c;
+
+        const copiaOrdenada = [...listadoPaisesEspanol].sort((a, b) => a.localeCompare(b));
+        copiaOrdenada.forEach(paisEsp => {
+            const o = document.createElement('option');
+            o.value = paisley = paisEsp; o.textContent = paisEsp;
             selectNacionalidad.appendChild(o);
         });
     }
@@ -135,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rowObj = {};
                 headers.forEach((header, index) => {
                     const value = columns[index].replace(/^["']|["']$/g, '').trim();
-                    if (header === 'home_team' || header === 'away_team' || header === 'id_partido') {
+                    if (header === 'home_team' || header === 'away_team' || header === 'id_partido' || header === 'date' || header === 'time_utc') {
                         rowObj[header] = value;
                     } else {
                         rowObj[header] = parseFloat(value);
@@ -144,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 listData.push(rowObj);
             }
             appState.partidosData = listData;
-            console.log(`Base de partidos cargada con éxito. Total: ${listData.length}`);
         } catch (error) {
             console.warn("Fallo de entorno local CORS mitigado.");
         }
@@ -157,7 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
             appState.currentStep = 2; document.getElementById('step-2').classList.add('active');
             updateProgressBar();
         } else if (appState.currentStep === 2) {
-            if (selectNacionalidad) appState.nacionalidad = selectNacionalidad.value;
+            if (selectNacionalidad) {
+                const seleccionEsp = selectNacionalidad.value;
+                appState.nacionalidad = diccionarioPaises[seleccionEsp] || "";
+            }
             document.getElementById('step-2').classList.remove('active');
             appState.currentStep = 3; document.getElementById('step-3').classList.add('active');
             updateProgressBar();
@@ -173,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             appState.currentStep = 5;
             updateProgressBar();
-            
             runLoadingAndRecommendationFlow();
         }
     }
@@ -201,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function runLoadingAndRecommendationFlow() {
         transitionToPhase('phase-loading');
-
         setTimeout(() => {
             calcularRecomendacionesMotor();
             renderSummaryHeader();
@@ -211,22 +231,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1800); 
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // MOTOR DE RECOMENDACIÓN AJUSTADO (ZONA HORARIA AUTO & NO WEEKEND)
-    // ─────────────────────────────────────────────────────────────────────────
+    // --- MOTOR DE RECOMENDACIÓN ---
     function calcularRecomendacionesMotor() {
         const partidos = appState.partidosData;
         const nacUsuario = appState.nacionalidad;
-        const userOffset = appState.utcOffset; // Desvío dinámico del cliente
 
-        // 1. CORRECCIÓN: Eliminada la variable w_fin_de_semana de la estructura
         const pesosCrudos = {
             w_nacionalidad: nacUsuario !== "" ? 35.0 : 0.0,
             w_calidad_elo: appState.w_calidad_elo,
             w_paridad_elo: appState.w_paridad_elo,
             w_calidad_fifa: appState.w_calidad_fifa,
             w_paridad_fifa: appState.w_paridad_fifa,
-            w_horario_libre: PESO_HORARIO_LIBRE
+            w_fin_de_semana: PESO_FIN_DE_SEMANA 
         };
 
         let sumaTotal = 0;
@@ -242,37 +258,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const favUsuario = appState.nacionalidad;
 
-        const calculados = partidos.map(partido => {
+        let calculados = partidos.map(partido => {
             const item = { ...partido };
 
-            const horaUtc = item.match_hora_utc;
-            const diaUtc = item.day_of_week_num;
+            // --- MANEJO DE FECHA Y HORA BASADO EN LAS NUEVAS COLUMNAS DEL CSV ---
+            // Construimos la fecha base UTC combinando tus nuevas columnas 'date' y 'time_utc'
+            const stringTimestampUtc = `${item.date}T${item.time_utc}Z`;
+            const dateObjetoUtc = new Date(stringTimestampUtc);
 
-            // ZONA HORARIA DINÁMICA CON MANEJO DE DESBORDAMIENTO
-            const horaLocalBruta = horaUtc + userOffset;
-            
-            let hora1 = horaLocalBruta % 24;
-            if (hora1 < 0) hora1 += 24; 
+            // Calculamos el timestamp absoluto local restando el offset del cliente de forma segura
+            const localTimestampMs = dateObjetoUtc.getTime() - appState.clientTimezoneOffsetMs;
+            const dateObjetoLocal = new Date(localTimestampMs);
 
-            let dia1 = diaUtc;
-            if (horaLocalBruta >= 24) {
-                dia1 = (diaUtc + 1) % 7;
-            } else if (horaLocalBruta < 0) {
-                dia1 = (diaUtc - 1 + 7) % 7;
-            }
+            // Extraemos los valores correspondientes al huso local del cliente
+            const localHour1 = dateObjetoLocal.getUTCHours(); 
+            const localHour2 = (localHour1 + 1) % 24;
 
-            let hora2 = (hora1 + 1) % 24;
-            let dia2 = hora2 < hora1 ? (dia1 + 1) % 7 : dia1;
+            // Conseguimos el día de la semana adaptado al grid de agenda (0=Lun ... 6=Dom)
+            // getUTCDay devuelve 0=Dom, 1=Lun ... 6=Sáb, por lo que re-mapeamos:
+            const dayIndexNative = dateObjetoLocal.getUTCDay();
+            const localGridDay1 = dayIndexNative === 0 ? 6 : dayIndexNative - 1;
+            const localGridDay2 = localHour2 < localHour1 ? (localGridDay1 + 1) % 7 : localGridDay1;
 
-            // Inyectamos día y hora local calculados en el objeto para usarlos en la renderización de la tabla
-            item['local_hour_1'] = hora1;
-            item['local_day_1'] = dia1;
+            // Almacenamos parámetros locales legibles directamente en el objeto de la fila
+            item['local_timestamp'] = localTimestampMs; // Clave para ordenamiento cronológico preciso
+            item['local_hour_1'] = localHour1;
+            item['local_day_name'] = diasSemanaLargos[dayIndexNative];
+            item['local_day_num'] = dateObjetoLocal.getUTCDate();
+            item['local_month_name'] = mesesLargos[dateObjetoLocal.getUTCMonth()];
 
-            const listaDia1 = appState.horarioLibre[dia1] || [];
-            const listaDia2 = appState.horarioLibre[dia2] || [];
+            const listaDia1 = appState.horarioLibre[localGridDay1] || [];
+            const listaDia2 = appState.horarioLibre[localGridDay2] || [];
 
-            const puedeVerPrimerTiempo = listaDia1.includes(hora1);
-            const puedeVerSegundoTiempo = listaDia2.includes(hora2);
+            const puedeVerPrimerTiempo = listaDia1.includes(localHour1);
+            const puedeVerSegundoTiempo = listaDia2.includes(localHour2);
 
             let disp = 0.0;
             if (puedeVerPrimerTiempo && puedeVerSegundoTiempo) disp = 1.0;
@@ -289,19 +308,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 return w * (s > 0 ? featDirecta : featInversa);
             }
 
-            // Ecuación limpia lineal (sin la feature is_weekend)
             item['Score_Recomendacion'] = (
                 aplicarLogicaJS('w_nacionalidad', item['feature_nacionalidad'], 1.0 - item['feature_nacionalidad']) +
                 aplicarLogicaJS('w_calidad_elo', item['ELO_match_rating_scaled'], 1.0 - item['ELO_match_rating_scaled']) +
                 aplicarLogicaJS('w_paridad_elo', 1.0 - item['ELO_diff_scaled'], item['ELO_diff_scaled']) +
                 aplicarLogicaJS('w_calidad_fifa', item['PC2_Calidad_scaled'], 1.0 - item['PC2_Calidad_scaled']) +
                 aplicarLogicaJS('w_paridad_fifa', 1.0 - item['PC1_Disparidad_scaled'], item['PC1_Disparidad_scaled']) +
-                (pesosNorm['w_horario_libre'] * item['feature_disponibilidad'])
+                aplicarLogicaJS('w_fin_de_semana', item['is_weekend'], 1.0 - item['is_weekend'])
             );
 
             return item;
         });
 
+        // Ordenar inicialmente por score para estampar la posición oficial
+        calculados.sort((a, b) => b.Score_Recomendacion - a.Score_Recomendacion);
+        
+        calculados.forEach((partido, index) => {
+            partido['recommendation_order'] = index + 1;
+        });
+
+        // Calcular Percentiles
         const scoresOrdenados = calculados.map(c => c.Score_Recomendacion).sort((a, b) => a - b);
         
         function getQuantile(sortedArr, q) {
@@ -316,15 +342,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const qAlta = getQuantile(scoresOrdenados, 0.85);
         const qMedia = getQuantile(scoresOrdenados, 0.50);
-
         const pAlta = Math.max(qAlta, 0.65);
         const pMedia = Math.max(qMedia, 0.45);
 
         calculados.forEach(item => {
             const score = item.Score_Recomendacion;
-            if (score >= pAlta) item['Categoria'] = "Imperdible 🌟";
-            else if (score >= pMedia) item['Categoria'] = "Vale la pena 📺";
-            else item['Categoria'] = "Para ver el resumen 📱";
+            const disp = item.feature_disponibilidad;
+
+            if (score >= pAlta) {
+                if (disp === 0.0) item['Categoria'] = "Vale la pena 📺";
+                else item['Categoria'] = "Imperdible 🌟";
+            } else if (score >= pMedia) {
+                item['Categoria'] = "Vale la pena 📺";
+            } else {
+                item['Categoria'] = "Para ver el resumen 📱";
+            }
         });
 
         appState.partidosRecomendados = calculados;
@@ -342,22 +374,50 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('count-valepena').textContent = vale;
         document.getElementById('count-resumen').textContent = res;
 
-        const nac = appState.nacionalidad || "Neutral";
+        let paisUI = "Neutral";
+        for (let key in diccionarioPaises) {
+            if (diccionarioPaises[key] === appState.nacionalidad) {
+                paisUI = key;
+                break;
+            }
+        }
+
         const sliderCalidadVal = parseInt(document.getElementById('slider-calidad').value, 10);
         const sliderParidadVal = parseInt(document.getElementById('slider-paridad').value, 10);
-        const gmtText = appState.utcOffset >= 0 ? `+${appState.utcOffset}` : appState.utcOffset;
+        
+        // Formateador de texto UTC local sutil
+        const desvioHoras = Math.round(appState.clientTimezoneOffsetMs / -3600000);
+        const gmtText = desvioHoras >= 0 ? `+${desvioHoras}` : desvioHoras;
         
         let txtParidad = "Indiferente a la paridad";
         if (sliderParidadVal > 15) txtParidad = "Preferís partidos parejos";
-        else if (sliderParidadVal < -15) txtParidad = "Preferís goleadas o partidos disparejos";
+        else if (sliderParidadVal < -15) txtParidad = "Preferís partidos disparejos";
 
         document.getElementById('profile-summary-text').textContent = 
-            `${nac} · Agenda local activa (UTC ${gmtText}) · ${txtParidad} (Nivel indexado: ${sliderCalidadVal >= 0 ? '+' : ''}${sliderCalidadVal})`;
+            `${paisUI} · Agenda Local Activa (GMT ${gmtText}) · ${txtParidad}`;
     }
 
+    // --- ORDENAMIENTO DE ENCABEZADOS DE COLUMNA ---
+    // --- ORDENAMIENTO DE ENCABEZADOS DE COLUMNA Y RENDERIZADO PREMIUM ---
     function sortAndRenderTable() {
         const field = appState.currentSortField;
         const order = appState.currentSortOrder;
+
+        // Diccionario estático de banderas en emoji vinculadas al nombre en inglés del CSV
+        const banderasPaises = {
+            "Korea Republic": "🇰🇷", "Mexico": "🇲🇽", "Czechia": "🇨🇿", "South Africa": "🇿🇦",
+            "Canada": "🇨🇦", "Switzerland": "🇨🇭", "Qatar": "🇶🇦", "Bosnia-Herzegovina": "🇧🇦",
+            "Brazil": "🇧🇷", "Scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "Haiti": "🇭🇹", "Morocco": "🇲🇦",
+            "Australia": "🇦🇺", "USA": "🇺🇸", "Turkey": "🇹🇷", "Paraguay": "🇵🇾",
+            "Ecuador": "🇪🇨", "Germany": "🇩🇪", "Côte d'Ivoire": "🇨🇮", "Curaçao": "🇨🇼",
+            "Curaçao": "🇨🇼", "Netherlands": "🇳🇱", "Japan": "🇯🇵", "Sweden": "🇸🇪",
+            "Tunisia": "🇹🇳", "IR Iran": "🇮🇷", "Belgium": "🇧🇪", "Egypt": "🇪🇬",
+            "New Zealand": "🇳🇿", "Spain": "🇪🇸", "Uruguay": "🇺🇾", "Saudi Arabia": "🇸🇦",
+            "Cabo Verde": "🇨🇻", "France": "🇫🇷", "Senegal": "🇸🇳", "Iraq": "🇮🇶",
+            "Norway": "🇳🇴", "Austria": "🇦🇹", "Argentina": "🇦🇷", "Algeria": "🇩🇿",
+            "Jordan": "🇯🇴", "Portugal": "🇵🇹", "Colombia": "🇨🇴", "Uzbekistan": "🇺🇿",
+            "Congo DR": "🇨🇩", "Panama": "🇵🇦", "England": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "Ghana": "🇬🇭", "Croatia": "🇭🇷"
+        };
 
         const sorted = [...appState.partidosRecomendados].sort((a, b) => {
             let valA = a[field];
@@ -366,11 +426,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (field === 'Partido') {
                 valA = `${a.home_team} vs ${a.away_team}`;
                 valB = `${b.home_team} vs ${b.away_team}`;
-            }
-            // Si ordena por fecha, mapeamos la hora local calculada para mantener consistencia
-            if (field === 'match_hora_utc') {
-                valA = a.day_of_week_num * 24 + a.match_hora_utc;
-                valB = b.day_of_week_num * 24 + b.match_hora_utc;
             }
 
             if (typeof valA === 'string') {
@@ -382,36 +437,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tableBody.innerHTML = '';
 
-        sorted.forEach((partido, index) => {
+        sorted.forEach(partido => {
             const tr = document.createElement('tr');
-            if (partido.Categoria.includes("Imperdible")) tr.classList.add('row-imperdible');
+            
+            // --- INYECCIÓN DE CLASES DE GRADIENTE SEGÚN LA CATEGORÍA INTERNA ---
+            if (partido.Categoria.includes("Imperdible")) {
+                tr.classList.add('row-cat-imperdible');
+            } else if (partido.Categoria.includes("Vale la pena")) {
+                tr.classList.add('row-cat-valepena');
+            } else {
+                tr.classList.add('row-cat-resumen');
+            }
 
+            // 1. Columna "#" (Se mantiene el ordenamiento nativo que ya funciona impecable)
             const tdIndex = document.createElement('td');
-            tdIndex.textContent = index + 1;
+            tdIndex.textContent = partido.recommendation_order;
+            tdIndex.style.fontWeight = "700";
+            tdIndex.style.color = "var(--primary-accent)";
             tr.appendChild(tdIndex);
 
-            const tdCat = document.createElement('td');
-            const spanBadge = document.createElement('span');
-            spanBadge.classList.add('match-badge');
-            if (partido.Categoria.includes("Imperdible")) spanBadge.classList.add('cat-imperdible');
-            else if (partido.Categoria.includes("Vale la pena")) spanBadge.classList.add('cat-valepena');
-            else spanBadge.classList.add('cat-resumen');
-            spanBadge.textContent = partido.Categoria.replace(/ 🌟| 📺| 📱/, '');
-            tdCat.appendChild(spanBadge);
-            tr.appendChild(tdCat);
-
+            // 2. Columna "Partido" (Alineado simétrico con banderas)
             const tdTeams = document.createElement('td');
             tdTeams.classList.add('cell-teams');
-            tdTeams.textContent = `${partido.home_team} vs ${partido.away_team}`;
+            
+            const banderaHome = banderasPaises[partido.home_team] || "";
+            const banderaAway = banderasPaises[partido.away_team] || "";
+            
+            const spanHome = document.createElement('span');
+            spanHome.classList.add('cell-team-home');
+            spanHome.innerHTML = `<span class="flag-home">${banderaHome}</span>${partido.home_team}`;
+            
+            const spanVs = document.createElement('span');
+            spanVs.classList.add('cell-team-vs');
+            spanVs.textContent = "vs.";
+            
+            const spanAway = document.createElement('span');
+            spanAway.classList.add('cell-team-away');
+            spanAway.innerHTML = `${partido.away_team}<span class="flag-away">${banderaAway}</span>`;
+            
+            tdTeams.appendChild(spanHome);
+            tdTeams.appendChild(spanVs);
+            tdTeams.appendChild(spanAway);
             tr.appendChild(tdTeams);
 
-            // ADAPTACIÓN DE LA COLUMNA DE FECHA Y HORA AL HORARIO LOCAL PROPIO DEL USUARIO
+            // 3. Columna "Día"
             const tdDate = document.createElement('td');
-            const diaTexto = diasSemanaLargos[partido.local_day_1];
-            const horaFormateada = partido.local_hour_1 < 10 ? `0${partido.local_hour_1}:00` : `${partido.local_hour_1}:00`;
-            tdDate.textContent = `${diaTexto}, ${horaFormateada}hs`;
+            tdDate.textContent = `${partido.local_day_name}, ${partido.local_day_num} de ${partido.local_month_name}`; 
             tr.appendChild(tdDate);
 
+            // 4. Columna "Hora"
+            const tdTime = document.createElement('td');
+            const horaFormateada = partido.local_hour_1 < 10 ? `0${partido.local_hour_1}:00hs` : `${partido.local_hour_1}:00hs`;
+            tdTime.textContent = horaFormateada;
+            tr.appendChild(tdTime);
+
+            // 5. Columna "Score Recomendación"
             const tdScore = document.createElement('td');
             const pct = Math.round(partido.Score_Recomendacion * 100);
             const wrapper = document.createElement('div'); wrapper.classList.add('score-cell-wrapper');
@@ -423,12 +503,16 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.appendChild(txtPct); tdScore.appendChild(wrapper);
             tr.appendChild(tdScore);
 
+            // 6. Columna "Disponibilidad"
             const tdDisp = document.createElement('td');
-            const spanIcon = document.createElement('span'); spanIcon.classList.add('disp-icon');
-            if (partido.feature_disponibilidad === 1.0) spanIcon.textContent = "✅";
-            else if (partido.feature_disponibilidad === 0.5) spanIcon.textContent = "🕐";
-            else spanIcon.textContent = "❌";
-            tdDisp.appendChild(spanIcon); tr.appendChild(tdDisp);
+            if (partido.feature_disponibilidad === 1.0) {
+                tdDisp.textContent = "✅ Completo"; tdDisp.style.color = "#00e676";
+            } else if (partido.feature_disponibilidad === 0.5) {
+                tdDisp.textContent = "🕐 Solo un tiempo"; tdDisp.style.color = "#ffca28";
+            } else {
+                tdDisp.textContent = "❌ No coincide con horarios"; tdDisp.style.color = "#aeaeb2";
+            }
+            tr.appendChild(tdDisp);
 
             tableBody.appendChild(tr);
         });
