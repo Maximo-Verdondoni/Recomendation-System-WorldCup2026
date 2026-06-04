@@ -369,3 +369,232 @@ body {
     color: var(--primary-accent);
     background-color: rgba(255, 255, 255, 0.03);
 }
+
+/* --- EFECTO DE IMÁGENES LATERALES PREMIUM EN LA LANDING --- */
+
+#phase-landing {
+    position: relative;
+    overflow: hidden; /* Evita que las imágenes generen scroll horizontal */
+    background-color: #0b0b0c; /* Asegurá que este sea el color negro base de tu app */
+}
+
+/* Forzamos a que el contenido de texto quede siempre por encima de las fotos de fondo */
+.landing-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* Estructura base para los contenedores de las imágenes */
+.landing-bg-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 35vw; /* Ocupan el 35% del ancho de la pantalla cada una, dejando el centro libre */
+    pointer-events: none; /* Hace que las imágenes sean invisibles a los clics del usuario */
+}
+
+.landing-bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la proporción de la foto sin deformarla */
+    opacity: 0.4; /* Opacidad sutil para que juegue bien con el modo oscuro y no sature */
+}
+
+/* Posicionamiento a la izquierda */
+.bg-left {
+    left: 0;
+}
+
+/* Posicionamiento a la derecha */
+.bg-right {
+    right: 0;
+}
+
+/* --- MÁSCARAS DE DEGRADADO (Garantizan el desvanecido smooth a negro) --- */
+.gradient-mask-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Va desde transparente en el borde izquierdo, a negro total hacia el centro */
+    background: linear-gradient(90deg, rgba(11, 11, 12, 0) 0%, rgba(11, 11, 12, 0.5) 60%, #0b0b0c 100%);
+}
+
+.gradient-mask-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Va desde transparente en el borde derecho, a negro total hacia el centro */
+    background: linear-gradient(270deg, rgba(11, 11, 12, 0) 0%, rgba(11, 11, 12, 0.5) 60%, #0b0b0c 100%);
+}
+
+/* Opcional: Si en celulares se ve muy amontonado, las ocultamos o bajamos la opacidad */
+@media (max-width: 768px) {
+    .landing-bg-image img {
+        opacity: 0.15;
+    }
+    .landing-bg-image {
+        width: 50vw; /* En mobile dejamos que cubran un poco más de fondo de manera muy tenue */
+    }
+}
+
+/* ==========================================================================
+   ESTILOS PREMIUM PARA IMÁGENES LATERALES EN TODA LA PANTALLA
+   ========================================================================== */
+
+/* Contenedor global con transiciones elásticas */
+.landing-bg-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    /* Transición smooth para los cambios de opacidad */
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- ESCALONES DE ATENUACIÓN PROGRESIVA (50% más oscuro acumulativo por paso) --- */
+
+/* Paso 1: Grilla horaria (Primer clic en Empezar) -> Baja un poco */
+.landing-bg-wrapper.dimmed-step-1 {
+    opacity: 0.80; 
+}
+
+/* Paso 2: Selección de Nacionalidad -> 60% del brillo nativo */
+.landing-bg-wrapper.dimmed-step-2 {
+    opacity: 0.60; 
+}
+
+/* Paso 3: Slider de Calidad -> 40% del brillo nativo */
+.landing-bg-wrapper.dimmed-step-3 {
+    opacity: 0.40; 
+}
+
+/* Paso 4 y Pantalla de Carga: Slider de Paridad / Calculando -> 20% del brillo nativo */
+.landing-bg-wrapper.dimmed-step-4 {
+    opacity: 0.20; /* Mantiene la silueta de Messi y Brasil súper tenue al final */
+}
+
+/* Paso 5: PANTALLA DE CARGA (Blackout total) -> Se apaga por completo a negro */
+.landing-bg-wrapper.dimmed-step-5 {
+    opacity: 0; /* Desaparecen Messi y Brasil al 100% mientras calcula */
+}
+
+/* Formato absoluto independiente para cada bloque lateral */
+.landing-bg-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 42vw; /* Cubre el 42% del ancho físico del monitor de cada lado */
+    height: 100%;
+}
+
+.landing-bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.32; /* Opacidad sutil para dar ambiente futbolístico sin saturar */
+}
+
+/* Posiciones fijas a los bordes */
+.bg-left { left: 0; }
+.bg-right { right: 0; }
+
+/* Máscaras de degradado: cambialas por el color exacto de tu fondo (ej: #0b0b0c) */
+.gradient-mask-left {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, rgba(11, 11, 12, 0) 0%, rgba(11, 11, 12, 0.4) 50%, #0b0b0c 85%);
+}
+
+.gradient-mask-right {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(270deg, rgba(11, 11, 12, 0) 0%, rgba(11, 11, 12, 0.4) 50%, #0b0b0c 85%);
+}
+
+/* Reset crítico en la landing para que el fondo sea transparente y deje ver las fotos */
+#phase-landing {
+    background: transparent !important;
+    position: relative;
+    z-index: 10;
+}
+
+/* Sombras paralelas sutiles en los textos centrales para levantar la lectura */
+.landing-title {
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+}
+.landing-subtitle {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    max-width: 540px; /* Evita que el bloque de texto tape las caras de los jugadores */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive para dispositivos chicos (evitamos ruido visual en pantallas chicas) */
+@media (max-width: 1024px) {
+    .landing-bg-image { width: 50vw; }
+    .landing-bg-image img { opacity: 0.12; }
+}
+
+/* ==========================================================================
+   BANNER DE RESULTADOS CORREGIDO (Abarca el 100% real de la pantalla)
+   ========================================================================== */
+
+#phase-results {
+    position: relative;
+    padding-top: 40px; /* Mantiene la distancia prolija para los textos superiores */
+}
+
+/* Forzamos a que todo el contenido flote por encima del banner de fondo */
+.results-main-header,
+.table-responsive-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+/* Contenedor del banner modificado para romper los límites del bloque central */
+.results-banner-container {
+    position: absolute;
+    top: -50px;
+    
+    /* TRUCO DE INGENIERÍA FRONT-END: Clava el centro del banner al centro de la pantalla */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Forzamos el ancho completo del navegador física y dinámicamente */
+    width: 100vw; 
+    height: 450px; /* Le subí a 320px para que luzca mejor al ser más ancho */
+    
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* La imagen estirada de punta a punta sin perder proporción */
+.results-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.40; /* Atenuación sutil para que no compita con los textos */
+}
+
+/* --- MÁSCARA DE DEGRADADO VERTICAL ADAPTADA AL NUEVO ANCHO --- */
+.gradient-mask-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Se desvanece de forma invisible hacia tu fondo negro (ej: #0b0b0c) */
+    background: linear-gradient(180deg, 
+        rgba(11, 11, 12, 0) 0%, 
+        rgba(11, 11, 12, 0.4) 40%, 
+        #0b0b0c 100%
+    );
+}

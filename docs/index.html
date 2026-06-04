@@ -12,6 +12,18 @@
 </head>
 <body>
 
+    <div class="landing-bg-wrapper">
+        <div class="landing-bg-image bg-left">
+            <img src="images/brasil_1.jpg" alt="Mundial Izquierda">
+            <div class="gradient-mask-left"></div>
+        </div>
+        
+        <div class="landing-bg-image bg-right">
+            <img src="images/messi_1.jpg" alt="Mundial Derecha">
+            <div class="gradient-mask-right"></div>
+        </div>
+    </div>
+
     <div id="progress-container" class="hidden">
         <div id="progress-bar"></div>
     </div>
@@ -117,6 +129,12 @@
         </section>
 
         <section id="phase-results" class="phase">
+
+            <div class="results-banner-container">
+                <img src="images/banner.png" alt="Mundial Banner" class="results-banner-img">
+                <div class="gradient-mask-bottom"></div>
+            </div>
+
             <header class="results-main-header">
                 <h1 class="results-title">🏆 Tus recomendaciones — Mundial 2026</h1>
                 <p id="profile-summary-text" class="results-summary-line">Cargando perfil...</p>
@@ -140,6 +158,7 @@
                         <span id="count-resumen" class="count-number">0</span>
                     </div>
                 </div>
+            </header>
 
             <div class="table-responsive-wrapper">
                 <table id="recommendations-table">
@@ -153,8 +172,7 @@
                             <th data-sort="feature_disponibilidad">Disponibilidad ↕</th>
                         </tr>
                     </thead>
-                    <tbody id="table-results-body">
-                        </tbody>
+                    <tbody id="table-results-body"></tbody>
                 </table>
             </div>
 

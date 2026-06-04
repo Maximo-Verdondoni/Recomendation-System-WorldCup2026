@@ -79,11 +79,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Botón inicial
         btnStart.addEventListener('click', () => {
-            appState.currentStep = 1;
+            appState.currentStep = 1; // Primero fijamos el paso 1
             updateProgressBar();
+            actualizarOscuridadFondo(); // ¡Acá ahora sí va a activar la clase dimmed-step-1!
             progressContainer.classList.remove('hidden');
             transitionToPhase('phase-onboarding');
         });
+
+        // Link para volver a configurar al final
+        const linkReset = document.getElementById('link-reset-onboarding');
+        if (linkReset) {
+            linkReset.addEventListener('click', (e) => {
+                e.preventDefault();
+                appState.currentStep = 1;
+                updateProgressBar();
+                actualizarOscuridadFondo(); // Limpia los oscurecidos
+                progressContainer.classList.remove('hidden');
+                transitionToPhase('phase-onboarding');
+            });
+        }
 
         // --- NUEVO: LÓGICA PARA MARCAR TODA LA GRILLA COMO LIBRE ---
         const btnSelectAll = document.getElementById('btn-select-all-hours');
@@ -225,6 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
             updateProgressBar();
             runLoadingAndRecommendationFlow();
         }
+
+        // NUEVO: Actualizar el nivel de atenuación del fondo al avanzar
+        actualizarOscuridadFondo();
     }
 
     function handleNavigationBack() {
@@ -240,6 +257,23 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('step-4').classList.remove('active');
             appState.currentStep = 3; document.getElementById('step-3').classList.add('active');
             updateProgressBar();
+        }
+
+        // NUEVO: Actualizar el nivel de atenuación del fondo al retroceder
+        actualizarOscuridadFondo();
+    }
+
+    // NUEVA FUNCIÓN AUXILIAR: Maneja las clases de intensidad del fondo
+    function actualizarOscuridadFondo() {
+        const bgWrapper = document.querySelector('.landing-bg-wrapper');
+        if (!bgWrapper) return;
+
+        // Limpiamos todas las clases previas de intensidad para evitar solapamientos
+        bgWrapper.classList.remove('dimmed-step-1', 'dimmed-step-2', 'dimmed-step-3', 'dimmed-step-4', 'dimmed-step-5');
+
+        // Si ya entramos al onboarding (Paso 1 al 5), asignamos la clase exacta de su paso
+        if (appState.currentStep >= 1 && appState.currentStep <= 5) {
+            bgWrapper.classList.add(`dimmed-step-${appState.currentStep}`);
         }
     }
 
