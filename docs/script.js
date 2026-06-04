@@ -215,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const badge = document.getElementById('saved-player-badge');
         const txtPlayer = document.getElementById('txt-saved-player');
         const txtCountry = document.getElementById('txt-saved-player-country');
+        const btnRemovePlayer = document.getElementById('btn-remove-selected-player');
 
         if (!inputSearch) return;
 
@@ -249,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 row.addEventListener('click', () => {
                     appState.jugadorFavorito = jugador.Player;
-                    appState.paisJugadorFavorito = jugador.Country; // Ya viene en inglés directo
+                    appState.paisJugadorFavorito = jugador.Country;
 
                     inputSearch.value = jugador.Player;
                     
@@ -257,9 +258,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     dropdown.classList.add('hidden');
                     inputSearch.blur();
 
+                    // Seteamos los datos en la UI
                     txtPlayer.textContent = jugador.Player;
-                    txtCountry.textContent = jugador.Country;
-                    badge.classList.remove('hidden');
+                    
+                    // Si el jugador tiene país, mostramos la pastilla; si no, la ocultamos
+                    if (jugador.Country) {
+                        txtCountry.textContent = jugador.Country;
+                        txtCountry.classList.remove('hidden');
+                    } else {
+                        txtCountry.textContent = '';
+                        txtCountry.classList.add('hidden');
+                    }
+                    
+                    // CORRECCIÓN: Mostramos la cruz SÓLO porque ya se seleccionó un jugador real
+                    if (btnRemovePlayer) btnRemovePlayer.classList.remove('hidden');
                 });
 
                 dropdown.appendChild(row);
@@ -274,8 +286,37 @@ document.addEventListener('DOMContentLoaded', () => {
             appState.paisJugadorFavorito = "";
             dropdown.classList.add('hidden');
             btnClear.classList.add('hidden');
-            badge.classList.add('hidden');
+            
+            // CORRECCIÓN: Al limpiar el input, el cuadro vuelve a su estado neutral sin ocultarse
+            txtPlayer.textContent = 'Ningún Jugador Seleccionado';
+            txtCountry.textContent = '';
+            txtCountry.classList.add('hidden');
+            
+            if (btnRemovePlayer) btnRemovePlayer.classList.add('hidden');
         });
+
+        // Evento para la cruz interna del badge verde (Borrar selección)
+        if (btnRemovePlayer) {
+            btnRemovePlayer.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                // Reseteamos el estado global
+                appState.jugadorFavorito = "";
+                appState.paisJugadorFavorito = "";
+                
+                if (inputSearch) inputSearch.value = '';
+                
+                // CORRECCIÓN: Volvemos al texto inicial, ocultamos el país y ocultamos la cruz.
+                // ¡El cuadro badge se mantiene visible!
+                txtPlayer.textContent = 'Ningún Jugador Seleccionado';
+                txtCountry.textContent = '';
+                txtCountry.classList.add('hidden');
+                
+                btnRemovePlayer.classList.add('hidden'); // Oculta la cruz porque dice 'Ningún Jugador...'
+                
+                if (btnClear) btnClear.classList.add('hidden');
+            });
+        }
 
         document.addEventListener('click', (e) => {
             if (!inputSearch.contains(e.target) && !dropdown.contains(e.target)) {

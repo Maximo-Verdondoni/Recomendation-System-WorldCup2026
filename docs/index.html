@@ -84,16 +84,22 @@
                         <p class="step-subtitle">Escribí su nombre para buscarlo. También priorizaremos los partidos de su selección.</p>
                     </div>
                     
+                    <div id="saved-player-badge" class="saved-badge-wrapper">
+                        <div class="saved-badge-content">
+                            <span>
+                                <strong id="txt-saved-player">Ningún Jugador Seleccionado</strong> 
+                                <span id="txt-saved-player-country" class="country-pill-badge hidden"></span>
+                            </span>
+                            <button type="button" id="btn-remove-selected-player" class="btn-remove-badge hidden" title="Eliminar selección">✕</button>
+                        </div>
+                    </div>
+
                     <div class="searchbox-container">
                         <div class="searchbox-wrapper">
                             <input type="text" id="input-search-player" class="premium-input-search" placeholder="🔍 Escribí el nombre de tu jugador favorito..." autocomplete="off">
                             <button type="button" id="btn-clear-player" class="btn-clear-search hidden">✕</button>
                         </div>
                         <div id="player-results-dropdown" class="search-results-dropdown hidden"></div>
-                    </div>
-
-                    <div id="saved-player-badge" class="saved-badge-wrapper hidden">
-                        <span>Jugador seleccionado: <strong id="txt-saved-player">None</strong> <span id="txt-saved-player-country" class="country-pill-badge"></span></span>
                     </div>
 
                     <div class="step-navigation">
