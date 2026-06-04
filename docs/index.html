@@ -36,6 +36,13 @@
                         <h2 class="step-title">¿Cuándo podés ver los partidos?</h2>
                         <p class="step-subtitle">Seleccioná los bloques horarios en los que estás disponible haciendo clic o arrastrando sobre la grilla.</p>
                     </div>
+
+                    <div class="grid-actions-container">
+                        <button type="button" id="btn-select-all-hours" class="btn-secondary-action">
+                            ✨ Marcar todo como libre
+                        </button>
+                    </div>
+
                     <div class="grid-scroll-container">
                         <div id="availability-grid" class="availability-grid"></div>
                     </div>
@@ -142,7 +149,7 @@
                             <th data-sort="Partido">Partido ↕</th>
                             <th data-sort="local_timestamp">Día ↕</th>
                             <th data-sort="local_hour_1">Hora ↕</th>
-                            <th data-sort="Score_Recomendacion">Recomendación ↕</th>
+                            <th data-sort="Score_Recomendacion">Score ↕</th>
                             <th data-sort="feature_disponibilidad">Disponibilidad ↕</th>
                         </tr>
                     </thead>

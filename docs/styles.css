@@ -330,3 +330,42 @@ body {
     margin-top: 48px; 
     margin-bottom: 24px;
 }
+
+/* Container para los botones de acción de la grilla */
+.grid-actions-container {
+    display: flex;
+    justify-content: flex-end; /* Lo alinea elegantemente a la derecha arriba de la grilla */
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+/* Botón secundario con efecto hover sutil */
+.btn-secondary-action {
+    background-color: #2c2c2e;
+    border: 1px solid var(--border-color);
+    color: #e5e5ea;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-secondary-action:hover {
+    background-color: #3a3a3c;
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-main);
+}
+
+/* Efecto hover premium para las cabeceras de hora al pasar el mouse */
+.grid-header-cell:hover {
+    color: var(--primary-accent); /* Se ilumina con tu verde acento */
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Efecto hover premium para los nombres de los días */
+.day-label:hover {
+    color: var(--primary-accent);
+    background-color: rgba(255, 255, 255, 0.03);
+}

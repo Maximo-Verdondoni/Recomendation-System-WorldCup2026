@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSortOrder: 'asc'
     };
 
+    // --- VARIABLES DE ARRASTRE DE LA GRILLA (POSICIONADAS AL PRINCIPIO) ---
+    let isDragging = false;
+    let dragSelectMode = true;
+
     const PESO_FIN_DE_SEMANA = 10.0;
 
     const listadoPaisesEspanol = [
@@ -48,11 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "Cabo Verde": "Cabo Verde", "Francia": "France", "Senegal": "Senegal", "Irak": "Iraq",
         "Noruega": "Norway", "Austria": "Austria", "Argentina": "Argentina", "Argelia": "Algeria",
         "Jordania": "Jordan", "Portugal": "Portugal", "Colombia": "Colombia", "Uzbekistán": "Uzbekistan",
-        "Congo RD": "Congo DR", "Panamá": "Panama", "Inglaterra": "England", "Ghana": "Ghana", "Croacia": "Croatia"
+        "Congo RD": "Congo DR", "Panamá": "Panama", "Inglaterra": "England", "Ghana": "Ghana", "Croacia": "Croacia"
     };
 
     const diasSemanaLargos = {
-        0: 'Dom', 1: 'Lun', 2: 'Mar', 3: 'Mié', 4: 'Jue', 5: 'Vie', 6: 'Sáb'
+        0: 'Domingo', 1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado'
     };
 
     const mesesLargos = {
@@ -73,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         populateCountriesDropdown();
         loadPartidosCSV(); 
 
+        // Botón inicial
         btnStart.addEventListener('click', () => {
             appState.currentStep = 1;
             updateProgressBar();
@@ -80,6 +85,35 @@ document.addEventListener('DOMContentLoaded', () => {
             transitionToPhase('phase-onboarding');
         });
 
+        // --- NUEVO: LÓGICA PARA MARCAR TODA LA GRILLA COMO LIBRE ---
+        const btnSelectAll = document.getElementById('btn-select-all-hours');
+        if (btnSelectAll) {
+            btnSelectAll.addEventListener('click', () => {
+                // Capturamos todas las celdas horarias generadas en el DOM
+                const todasLasCeldas = document.querySelectorAll('.grid-cell');
+                
+                // Evaluamos si ya están todas seleccionadas para alternar el comportamiento (Toggle)
+                const celdasSeleccionadas = document.querySelectorAll('.grid-cell.selected');
+                const marcarTodas = celdasSeleccionadas.length < todasLasCeldas.length;
+
+                todasLasCeldas.forEach(cell => {
+                    if (marcarTodas) {
+                        cell.classList.add('selected');
+                    } else {
+                        cell.classList.remove('selected');
+                    }
+                });
+
+                // Cambiamos dinámicamente el texto del botón para que sea intuitivo
+                if (marcarTodas) {
+                    btnSelectAll.textContent = "🧹 Desmarcar todo";
+                } else {
+                    btnSelectAll.textContent = "✨ Marcar todo como libre";
+                }
+            });
+        }
+
+        // Configuración de los disparadores basados en clases (Fiel a tu index.html)
         document.querySelectorAll('.next-step-trigger').forEach(btn => {
             btn.addEventListener('click', () => { handleNavigationNext(); });
         });
@@ -95,14 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        document.getElementById('link-reset-onboarding').addEventListener('click', (e) => {
-            e.preventDefault();
-            appState.currentStep = 1;
-            updateProgressBar();
-            progressContainer.classList.remove('hidden');
-            transitionToPhase('phase-onboarding');
-        });
-
+        // ESCUCHA DE COLUMNAS CONFIGURADA UNA SOLA VEZ AL INICIO Y BLINDADA
         document.querySelectorAll('#recommendations-table th').forEach(th => {
             th.addEventListener('click', () => {
                 const sortField = th.dataset.sort;
@@ -112,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     appState.currentSortOrder = appState.currentSortOrder === 'asc' ? 'desc' : 'asc';
                 } else {
                     appState.currentSortField = sortField;
-                    appState.currentSortOrder = (sortField === 'Score_Recomendacion' || sortField === 'feature_disponibilidad') ? 'desc' : 'asc';
+                    appState.currentSortOrder = (sortField === 'Score_Recomendacion' || sortField === 'feature_disponibilidad' || sortField === 'recommendation_order') ? 'desc' : 'asc';
                 }
                 
                 document.querySelectorAll('#recommendations-table th').forEach(h => h.classList.remove('active-sort', 'asc', 'desc'));
@@ -133,7 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const copiaOrdenada = [...listadoPaisesEspanol].sort((a, b) => a.localeCompare(b));
         copiaOrdenada.forEach(paisEsp => {
             const o = document.createElement('option');
-            o.value = paisley = paisEsp; o.textContent = paisEsp;
+            o.value = paisEsp; 
+            o.textContent = paisEsp;
             selectNacionalidad.appendChild(o);
         });
     }
@@ -225,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             calcularRecomendacionesMotor();
             renderSummaryHeader();
-            sortAndRenderTable();
+            sortAndRenderTable(); // Renderizado inicial directo y seguro
             progressContainer.classList.add('hidden');
             transitionToPhase('phase-results');
         }, 1800); 
@@ -234,10 +262,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- MOTOR DE RECOMENDACIÓN ---
     function calcularRecomendacionesMotor() {
         const partidos = appState.partidosData;
-        const nacUsuario = appState.nacionalidad;
+        const favUsuario = appState.nacionalidad;
 
         const pesosCrudos = {
-            w_nacionalidad: nacUsuario !== "" ? 35.0 : 0.0,
             w_calidad_elo: appState.w_calidad_elo,
             w_paridad_elo: appState.w_paridad_elo,
             w_calidad_fifa: appState.w_calidad_fifa,
@@ -256,42 +283,30 @@ document.addEventListener('DOMContentLoaded', () => {
             signos[k] = pesosCrudos[k] >= 0 ? 1 : -1;
         }
 
-        const favUsuario = appState.nacionalidad;
-
         let calculados = partidos.map(partido => {
             const item = { ...partido };
 
-            // 1. Reconstrucción de la fecha base UTC desde tu CSV de Python
             const stringTimestampUtc = `${item.date}T${item.time_utc}Z`;
             const dateObjetoUtc = new Date(stringTimestampUtc);
 
-            // 2. Cálculo del timestamp absoluto local del cliente
             const localTimestampMs = dateObjetoUtc.getTime() - appState.clientTimezoneOffsetMs;
             const dateObjetoLocal = new Date(localTimestampMs);
 
-            // 3. Extracción de parámetros locales exactos
             const localHour1 = dateObjetoLocal.getUTCHours(); 
             const localHour2 = (localHour1 + 1) % 24;
 
-            // getUTCDay() devuelve: 0=Domingo, 1=Lunes, 2=Martes, 3=Miércoles, 4=Jueves, 5=Viernes, 6=Sábado
             const dayIndexNative = dateObjetoLocal.getUTCDay();
-            
-            // Re-mapeo para tu grilla horaria de la agenda (0=Lun ... 6=Dom)
             const localGridDay1 = dayIndexNative === 0 ? 6 : dayIndexNative - 1;
             const localGridDay2 = localHour2 < localHour1 ? (localGridDay1 + 1) % 7 : localGridDay1;
 
-            // Guardamos la data local para renderizar la tabla
             item['local_timestamp'] = localTimestampMs;
             item['local_hour_1'] = localHour1;
             item['local_day_name'] = diasSemanaLargos[dayIndexNative];
             item['local_day_num'] = dateObjetoLocal.getUTCDate();
             item['local_month_name'] = mesesLargos[dateObjetoLocal.getUTCMonth()];
 
-            // 4. CORRECCIÓN CRÍTICA: Recalcular si el partido es fin de semana REAL para el usuario
-            // El boost se aplica SI Y SOLO SI para el cliente el partido cae Sábado (6) o Domingo (0)
             const isWeekendLocal = (dayIndexNative === 6 || dayIndexNative === 0) ? 1.0 : 0.0;
 
-            // 5. Evaluación de disponibilidad en la agenda del cliente
             const listaDia1 = appState.horarioLibre[localGridDay1] || [];
             const listaDia2 = appState.horarioLibre[localGridDay2] || [];
 
@@ -304,37 +319,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
             item['feature_disponibilidad'] = disp;
 
-            // 6. Coincidencia de Selección favorita
-            const juegaNac = (item.home_team === favUsuario || item.away_team === favUsuario) ? 1.0 : 0.0;
-            item['feature_nacionalidad'] = juegaNac;
-
             function aplicarLogicaJS(key, featDirecta, featInversa) {
                 const w = pesosNorm[key] || 0;
                 const s = signos[key] || 1;
                 return w * (s > 0 ? featDirecta : featInversa);
             }
 
-            // 7. Ecuación Lineal Modificada: Cambiamos item['is_weekend'] por nuestro isWeekendLocal recalculado
             item['Score_Recomendacion'] = (
-                aplicarLogicaJS('w_nacionalidad', item['feature_nacionalidad'], 1.0 - item['feature_nacionalidad']) +
                 aplicarLogicaJS('w_calidad_elo', item['ELO_match_rating_scaled'], 1.0 - item['ELO_match_rating_scaled']) +
                 aplicarLogicaJS('w_paridad_elo', 1.0 - item['ELO_diff_scaled'], item['ELO_diff_scaled']) +
                 aplicarLogicaJS('w_calidad_fifa', item['PC2_Calidad_scaled'], 1.0 - item['PC2_Calidad_scaled']) +
                 aplicarLogicaJS('w_paridad_fifa', 1.0 - item['PC1_Disparidad_scaled'], item['PC1_Disparidad_scaled']) +
-                aplicarLogicaJS('w_fin_de_semana', isWeekendLocal, 1.0 - isWeekendLocal) // <- ¡Acá entra el valor corregido!
+                aplicarLogicaJS('w_fin_de_semana', isWeekendLocal, 1.0 - isWeekendLocal)
             );
 
             return item;
         });
 
-        // Ordenar inicialmente por score para estampar la posición oficial
+        // Ordenamiento base para estampar el ranking oficial de recomendación matemático
         calculados.sort((a, b) => b.Score_Recomendacion - a.Score_Recomendacion);
-        
+
+        // Estampar índice original de recomendación
         calculados.forEach((partido, index) => {
             partido['recommendation_order'] = index + 1;
         });
 
-        // Calcular Percentiles
+        // Calcular Percentiles globales
         const scoresOrdenados = calculados.map(c => c.Score_Recomendacion).sort((a, b) => a - b);
         
         function getQuantile(sortedArr, q) {
@@ -349,20 +359,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const qAlta = getQuantile(scoresOrdenados, 0.85);
         const qMedia = getQuantile(scoresOrdenados, 0.50);
-        const pAlta = Math.min(qAlta, 0.75);
+        const pAlta = Math.max(qAlta, 0.65);
         const pMedia = Math.max(qMedia, 0.45);
 
         calculados.forEach(item => {
             const score = item.Score_Recomendacion;
             const disp = item.feature_disponibilidad;
+            const esPartidoFavorito = (item.home_team === favUsuario || item.away_team === favUsuario);
 
-            if (score >= pAlta) {
-                if (disp === 0.0) item['Categoria'] = "Vale la pena 📺";
-                else item['Categoria'] = "Imperdible 🌟";
-            } else if (score >= pMedia) {
-                item['Categoria'] = "Vale la pena 📺";
+            if (esPartidoFavorito) {
+                if (disp === 0.0) {
+                    item['Categoria'] = "Vale la pena 📺";
+                } else {
+                    item['Categoria'] = "Imperdible 🌟";
+                }
             } else {
-                item['Categoria'] = "Para ver el resumen 📱";
+                if (score >= pAlta) {
+                    if (disp === 0.0) item['Categoria'] = "Vale la pena 📺";
+                    else item['Categoria'] = "Imperdible 🌟";
+                } else if (score >= pMedia) {
+                    item['Categoria'] = "Vale la pena 📺";
+                } else {
+                    item['Categoria'] = "Para ver el resumen 📱";
+                }
             }
         });
 
@@ -389,44 +408,41 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        const sliderCalidadVal = parseInt(document.getElementById('slider-calidad').value, 10);
         const sliderParidadVal = parseInt(document.getElementById('slider-paridad').value, 10);
-        
-        // Formateador de texto UTC local sutil
         const desvioHoras = Math.round(appState.clientTimezoneOffsetMs / -3600000);
         const gmtText = desvioHoras >= 0 ? `+${desvioHoras}` : desvioHoras;
         
         let txtParidad = "Indiferente a la paridad";
         if (sliderParidadVal > 15) txtParidad = "Preferís partidos parejos";
-        else if (sliderParidadVal < -15) txtParidad = "Preferís partidos disparejos";
+        else if (sliderParidadVal < -15) txtParidad = "Preferís goleadas";
 
         document.getElementById('profile-summary-text').textContent = 
             `${paisUI} · Agenda Local Activa (GMT ${gmtText}) · ${txtParidad}`;
     }
 
-    // --- ORDENAMIENTO DE ENCABEZADOS DE COLUMNA ---
-    // --- ORDENAMIENTO DE ENCABEZADOS DE COLUMNA Y RENDERIZADO PREMIUM ---
+    // --- ORDENAMIENTO DE ENCABEZADOS Y RENDERIZADO ---
     function sortAndRenderTable() {
         const field = appState.currentSortField;
         const order = appState.currentSortOrder;
+        const favUsuario = appState.nacionalidad; 
 
-        // Diccionario estático de banderas en emoji vinculadas al nombre en inglés del CSV
         const banderasPaises = {
             "Korea Republic": "🇰🇷", "Mexico": "🇲🇽", "Czechia": "🇨🇿", "South Africa": "🇿🇦",
             "Canada": "🇨🇦", "Switzerland": "🇨🇭", "Qatar": "🇶🇦", "Bosnia-Herzegovina": "🇧🇦",
             "Brazil": "🇧🇷", "Scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "Haiti": "🇭🇹", "Morocco": "🇲🇦",
             "Australia": "🇦🇺", "USA": "🇺🇸", "Turkey": "🇹🇷", "Paraguay": "🇵🇾",
             "Ecuador": "🇪🇨", "Germany": "🇩🇪", "Côte d'Ivoire": "🇨🇮", "Curaçao": "🇨🇼",
-            "Curaçao": "🇨🇼", "Netherlands": "🇳🇱", "Japan": "🇯🇵", "Sweden": "🇸🇪",
-            "Tunisia": "🇹🇳", "IR Iran": "🇮🇷", "Belgium": "🇧🇪", "Egypt": "🇪🇬",
-            "New Zealand": "🇳🇿", "Spain": "🇪🇸", "Uruguay": "🇺🇾", "Saudi Arabia": "🇸🇦",
-            "Cabo Verde": "🇨🇻", "France": "🇫🇷", "Senegal": "🇸🇳", "Iraq": "🇮🇶",
-            "Norway": "🇳🇴", "Austria": "🇦🇹", "Argentina": "🇦🇷", "Algeria": "🇩🇿",
-            "Jordan": "🇯🇴", "Portugal": "🇵🇹", "Colombia": "🇨🇴", "Uzbekistan": "🇺🇿",
-            "Congo DR": "🇨🇩", "Panama": "🇵🇦", "England": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "Ghana": "🇬🇭", "Croatia": "🇭🇷"
+            "Netherlands": "🇳🇱", "Japan": "🇯🇵", "Sweden": "🇸🇪", "Tunisia": "🇹🇳", 
+            "IR Iran": "🇮🇷", "Belgium": "🇧🇪", "Egypt": "🇪🇬", "New Zealand": "🇳🇿", 
+            "Spain": "🇪🇸", "Uruguay": "🇺🇾", "Saudi Arabia": "🇸🇦", "Cabo Verde": "🇨🇻", 
+            "France": "🇫🇷", "Senegal": "🇸🇳", "Iraq": "🇮🇶", "Norway": "🇳🇴", 
+            "Austria": "🇦🇹", "Argentina": "🇦🇷", "Algeria": "🇩🇿", "Jordan": "🇯🇴", 
+            "Portugal": "🇵🇹", "Colombia": "🇨🇴", "Uzbekistan": "🇺🇿", "Congo DR": "🇨🇩", 
+            "Panama": "🇵🇦", "England": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "Ghana": "🇬🇭", "Croatia": "🇭🇷"
         };
 
-        const sorted = [...appState.partidosRecomendados].sort((a, b) => {
+        // 1. Clasificación base de ordenamiento genérico por campos
+        const baseSorted = [...appState.partidosRecomendados].sort((a, b) => {
             let valA = a[field];
             let valB = b[field];
 
@@ -442,12 +458,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // 2. Particionar por bloque prioritario de Selección (Solo si no está ordenando explícitamente por Fecha, Hora o Score)
+        let finalSorted = baseSorted;
+        if (favUsuario !== "" && (field === 'recommendation_order' || field === 'Score_Recomendacion')) {
+            const partidosFavoritos = baseSorted.filter(p => p.home_team === favUsuario || p.away_team === favUsuario);
+            const partidosRestantes = baseSorted.filter(p => p.home_team !== favUsuario && p.away_team !== favUsuario);
+            
+            if (order === 'asc') {
+                finalSorted = [...partidosFavoritos, ...partidosRestantes];
+            } else {
+                finalSorted = [...partidosRestantes, ...partidosFavoritos];
+            }
+        }
+
         tableBody.innerHTML = '';
 
-        sorted.forEach(partido => {
+        // 3. Pintado dinámico de las celdas (Corregido para re-indexar correlativamente)
+        finalSorted.forEach((partido, idx) => {
             const tr = document.createElement('tr');
             
-            // --- INYECCIÓN DE CLASES DE GRADIENTE SEGÚN LA CATEGORÍA INTERNA ---
             if (partido.Categoria.includes("Imperdible")) {
                 tr.classList.add('row-cat-imperdible');
             } else if (partido.Categoria.includes("Vale la pena")) {
@@ -456,14 +485,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 tr.classList.add('row-cat-resumen');
             }
 
-            // 1. Columna "#" (Se mantiene el ordenamiento nativo que ya funciona impecable)
+            // CORRECCIÓN COMPLETA: Columna '#' correlativa según el orden final en pantalla
             const tdIndex = document.createElement('td');
-            tdIndex.textContent = partido.recommendation_order;
+            // Si el orden de la columna es descendente (ej. invertido), cuenta al revés; si no, va del 1 al 72 limpio
+            tdIndex.textContent = order === 'desc' ? finalSorted.length - idx : idx + 1;
             tdIndex.style.fontWeight = "700";
             tdIndex.style.color = "var(--primary-accent)";
             tr.appendChild(tdIndex);
 
-            // 2. Columna "Partido" (Alineado simétrico con banderas)
+            // Columna Partido alineada con Flexbox y banderas
             const tdTeams = document.createElement('td');
             tdTeams.classList.add('cell-teams');
             
@@ -487,18 +517,18 @@ document.addEventListener('DOMContentLoaded', () => {
             tdTeams.appendChild(spanAway);
             tr.appendChild(tdTeams);
 
-            // 3. Columna "Día"
+            // Columna Día
             const tdDate = document.createElement('td');
             tdDate.textContent = `${partido.local_day_name}, ${partido.local_day_num} de ${partido.local_month_name}`; 
             tr.appendChild(tdDate);
 
-            // 4. Columna "Hora"
+            // Columna Hora
             const tdTime = document.createElement('td');
             const horaFormateada = partido.local_hour_1 < 10 ? `0${partido.local_hour_1}:00hs` : `${partido.local_hour_1}:00hs`;
             tdTime.textContent = horaFormateada;
             tr.appendChild(tdTime);
 
-            // 5. Columna "Score Recomendación"
+            // Columna Score
             const tdScore = document.createElement('td');
             const pct = Math.round(partido.Score_Recomendacion * 100);
             const wrapper = document.createElement('div'); wrapper.classList.add('score-cell-wrapper');
@@ -510,7 +540,7 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.appendChild(txtPct); tdScore.appendChild(wrapper);
             tr.appendChild(tdScore);
 
-            // 6. Columna "Disponibilidad"
+            // Columna Disponibilidad
             const tdDisp = document.createElement('td');
             if (partido.feature_disponibilidad === 1.0) {
                 tdDisp.textContent = "✅ Completo"; tdDisp.style.color = "#00e676";
@@ -525,35 +555,82 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- CONSTRUCCIÓN DEL GRID INTERACTIVO ---
+    // --- CONSTRUCCIÓN DEL GRID INTERACTIVO PREMIUM ---
     function buildAvailabilityGrid() {
         if (!gridContainer) return;
         gridContainer.innerHTML = '';
+        
+        // 1. Esquina superior izquierda vacía
         const emptyCorner = document.createElement('div');
         gridContainer.appendChild(emptyCorner);
 
+        // 2. Generar Cabeceras de Hora (Columnas 0 a 23)
         for (let h = 0; h < 24; h++) {
             const hourHeader = document.createElement('div');
-            hourHeader.classList.add('grid-header-cell'); hourHeader.textContent = h;
+            hourHeader.classList.add('grid-header-cell'); 
+            hourHeader.textContent = h;
+            hourHeader.style.cursor = 'pointer'; // Indicador visual de que es clickeable
+            hourHeader.title = `Marcar/Desmarcar las ${h}:00hs para toda la semana`;
+
+            // EVENTO: Clic en el número de la hora (Columna Completa)
+            hourHeader.addEventListener('click', () => {
+                // Buscamos todas las celdas que correspondan a esa hora específica
+                const celdasColumna = gridContainer.querySelectorAll(`.grid-cell[data-hour="${h}"]`);
+                const celdasSeleccionadas = gridContainer.querySelectorAll(`.grid-cell.selected[data-hour="${h}"]`);
+                
+                // Si no están todas marcadas, marcamos la columna entera. Si ya estaban todas, limpiamos.
+                const marcarTodas = celdasSeleccionadas.length < celdasColumna.length;
+                celdasColumna.forEach(cell => {
+                    if (marcarTodas) cell.classList.add('selected');
+                    else cell.classList.remove('selected');
+                });
+            });
+
             gridContainer.appendChild(hourHeader);
         }
 
+        // 3. Generar Filas por cada Día de la Semana
         const diasSemana = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
         diasSemana.forEach((dia, dayIndex) => {
             const dayLabel = document.createElement('div');
-            dayLabel.classList.add('day-label'); dayLabel.textContent = dia;
+            dayLabel.classList.add('day-label'); 
+            dayLabel.textContent = dia;
+            dayLabel.style.cursor = 'pointer'; // Indicador visual de que es clickeable
+            dayLabel.title = `Marcar/Desmarcar todo el ${dia}`;
+
+            // EVENTO: Clic en la etiqueta del Día (Fila Completa)
+            dayLabel.addEventListener('click', () => {
+                // Buscamos todas las celdas que correspondan a ese día específico
+                const celdasFila = gridContainer.querySelectorAll(`.grid-cell[data-day="${dayIndex}"]`);
+                const celdasSeleccionadas = gridContainer.querySelectorAll(`.grid-cell.selected[data-day="${dayIndex}"]`);
+                
+                // Alternamos comportamiento (Toggle) para la fila completa
+                const marcarTodas = celdasSeleccionadas.length < celdasFila.length;
+                celdasFila.forEach(cell => {
+                    if (marcarTodas) cell.classList.add('selected');
+                    else cell.classList.remove('selected');
+                });
+            });
+
             gridContainer.appendChild(dayLabel);
 
+            // 4. Generar las celdas horarias individuales de la fila
             for (let hour = 0; hour < 24; hour++) {
                 const cell = document.createElement('div');
-                cell.classList.add('grid-cell'); cell.dataset.day = dayIndex; cell.dataset.hour = hour;
+                cell.classList.add('grid-cell'); 
+                cell.dataset.day = dayIndex; 
+                cell.dataset.hour = hour;
 
+                // Eventos nativos de arrastre y clic individual que ya tenías funcionando
                 cell.addEventListener('mousedown', (e) => {
-                    e.preventDefault(); isDragging = true;
+                    e.preventDefault(); 
+                    isDragging = true;
                     dragSelectMode = !cell.classList.contains('selected');
                     toggleCell(cell, dragSelectMode);
                 });
-                cell.addEventListener('mouseenter', () => { if (isDragging) toggleCell(cell, dragSelectMode); });
+                cell.addEventListener('mouseenter', () => { 
+                    if (isDragging) toggleCell(cell, dragSelectMode); 
+                });
                 cell.addEventListener('touchstart', () => {
                     dragSelectMode = !cell.classList.contains('selected');
                     toggleCell(cell, dragSelectMode);
@@ -561,11 +638,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 gridContainer.appendChild(cell);
             }
         });
+        
         window.addEventListener('mouseup', () => { isDragging = false; });
     }
 
     function toggleCell(cell, select) {
-        if (select) cell.classList.add('selected'); else cell.classList.remove('selected');
+        if (select) {
+            cell.classList.add('selected');
+        } else {
+            cell.classList.remove('selected');
+        }
     }
 
     function saveGridData() {
