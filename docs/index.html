@@ -80,6 +80,30 @@
                 <div id="step-3" class="step-content">
                     <button class="btn-back-arrow prev-step-trigger">← Volver</button>
                     <div class="step-header">
+                        <h2 class="step-title">¿Hay algún jugador en específico que quieras seguir?</h2>
+                        <p class="step-subtitle">Escribí su nombre para buscarlo. También priorizaremos los partidos de su selección.</p>
+                    </div>
+                    
+                    <div class="searchbox-container">
+                        <div class="searchbox-wrapper">
+                            <input type="text" id="input-search-player" class="premium-input-search" placeholder="🔍 Escribí el nombre de tu jugador favorito..." autocomplete="off">
+                            <button type="button" id="btn-clear-player" class="btn-clear-search hidden">✕</button>
+                        </div>
+                        <div id="player-results-dropdown" class="search-results-dropdown hidden"></div>
+                    </div>
+
+                    <div id="saved-player-badge" class="saved-badge-wrapper hidden">
+                        <span>Jugador seleccionado: <strong id="txt-saved-player">None</strong> <span id="txt-saved-player-country" class="country-pill-badge"></span></span>
+                    </div>
+
+                    <div class="step-navigation">
+                        <button class="btn-primary next-step-trigger">Continuar</button>
+                    </div>
+                </div>
+
+                <div id="step-4" class="step-content">
+                    <button class="btn-back-arrow prev-step-trigger">← Volver</button>
+                    <div class="step-header">
                         <h2 class="step-title">¿Qué tanto valorás el nivel de las selecciones?</h2>
                         <p class="step-subtitle">Ajustá el control según tus preferencias de jerarquía futbolística.</p>
                     </div>
@@ -96,7 +120,7 @@
                     </div>
                 </div>
 
-                <div id="step-4" class="step-content">
+                <div id="step-5" class="step-content">
                     <button class="btn-back-arrow prev-step-trigger">← Volver</button>
                     <div class="step-header">
                         <h2 class="step-title">¿Qué tanta importancia le das a que el partido sea parejo?</h2>
@@ -115,10 +139,7 @@
                     </div>
                 </div>
 
-            </div>
-        </section>
-
-        <section id="phase-loading" class="phase">
+            </div> </section> <section id="phase-loading" class="phase">
             <div class="loading-content-wrapper">
                 <h2 class="loading-main-title">Calculando tus recomendaciones...</h2>
                 <div class="pulsing-dots">
@@ -168,7 +189,7 @@
                             <th data-sort="Partido">Partido ↕</th>
                             <th data-sort="local_timestamp">Día ↕</th>
                             <th data-sort="local_hour_1">Hora ↕</th>
-                            <th data-sort="Score_Recomendacion">Score ↕</th>
+                            <th data-sort="Score_Recomendacion">Motivo ↕</th>
                             <th data-sort="feature_disponibilidad">Disponibilidad ↕</th>
                         </tr>
                     </thead>

@@ -116,13 +116,49 @@ body {
 .badge-count { font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--card-bg); }
 .badge-count span { font-weight: 700; color: var(--text-main); }
 
-/* Estructura Tabla Premium */
-.table-responsive-wrapper { width: 100%; overflow-x: auto; border: 1px solid var(--border-color); border-radius: 12px; background-color: var(--card-bg); margin-bottom: 24px; -webkit-overflow-scrolling: touch; }
-#recommendations-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; min-width: 900px; }
-#recommendations-table th { background-color: #161618; color: var(--text-muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 16px; border-bottom: 1px solid var(--border-color); cursor: pointer; user-select: none; transition: background-color 0.2s ease; }
+/* Estructura Tabla Premium Modificada */
+.table-responsive-wrapper { 
+    width: 100%; 
+    max-width: 1200px; /* Incrementado de 1024px a 1200px para máxima amplitud */
+    overflow-x: auto; 
+    border: 1px solid var(--border-color); 
+    border-radius: 12px; 
+    background-color: var(--card-bg); 
+    margin-top: 48px; 
+    margin-bottom: 24px; 
+    -webkit-overflow-scrolling: touch; 
+}
+#recommendations-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    text-align: left; 
+    font-size: 0.95rem; 
+    min-width: max-content; /* CAMBIADO: Fuerza a estirar la tabla según el texto más largo */
+}
+#recommendations-table th { 
+    background-color: #161618; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    font-size: 0.8rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    padding: 16px 20px; 
+    border-bottom: 1px solid var(--border-color); 
+    cursor: pointer; 
+    user-select: none; 
+    transition: background-color 0.2s ease; 
+    white-space: nowrap; /* NUEVO: Evita doble línea en las cabeceras */
+}
+
+#recommendations-table td { 
+    padding: 16px 20px; 
+    border-bottom: 1px solid rgba(28, 28, 30, 0.5); 
+    vertical-align: middle; 
+    color: #e5e5ea; 
+    white-space: nowrap; /* NUEVO: Clave para que los motivos y las fechas se mantengan en una sola línea horizontal */
+}
 #recommendations-table th:hover { background-color: #1e1e21; color: var(--text-main); }
 #recommendations-table th.active-sort { color: var(--primary-accent); }
-#recommendations-table td { padding: 16px; border-bottom: 1px solid rgba(28, 28, 30, 0.5); vertical-align: middle; color: #e5e5ea; }
 
 /* Zebra Striping & Hovers */
 #recommendations-table tbody tr:nth-child(even) { background-color: rgba(255, 255, 255, 0.01); }
@@ -597,4 +633,118 @@ body {
         rgba(11, 11, 12, 0.4) 40%, 
         #0b0b0c 100%
     );
+}
+
+/* ==========================================================================
+   ESTILOS PREMIUM PARA EL SEARCHBOX DE JUGADORES
+   ========================================================================== */
+.searchbox-container {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    margin: 24px auto;
+    z-index: 200; /* Garantiza que los resultados floten sobre los botones */
+}
+
+.searchbox-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.premium-input-search {
+    width: 100%;
+    padding: 14px 44px 14px 18px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main);
+    background-color: #1c1c1e;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.premium-input-search:focus {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 4px rgba(0, 200, 83, 0.15);
+}
+
+.btn-clear-search {
+    position: absolute;
+    right: 14px;
+    background: none;
+    border: none;
+    color: #aeaeb2;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 4px;
+}
+.btn-clear-search:hover { color: var(--text-main); }
+
+/* LISTA DESPLEGABLE DE RESULTADOS */
+.search-results-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    max-height: 240px;
+    background-color: #1c1c1e;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Fila individual del jugador sugerido */
+.player-suggest-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    transition: background-color 0.15s ease;
+}
+.player-suggest-row:last-child { border-bottom: none; }
+.player-suggest-row:hover { background-color: #2c2c2e; }
+
+.player-suggest-name {
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+.player-suggest-meta {
+    font-size: 0.8rem;
+    color: #aeaeb2;
+    background-color: #2c2c2e;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+.player-suggest-row:hover .player-suggest-meta {
+    color: var(--primary-accent);
+    background-color: rgba(0, 200, 83, 0.1);
+}
+
+/* BADGE DE JUGADOR GUARDADO EXPOSITIVO */
+.saved-badge-wrapper {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(0, 200, 83, 0.08);
+    border: 1px solid rgba(0, 200, 83, 0.25);
+    padding: 10px 18px;
+    border-radius: 30px;
+    margin: 12px auto 24px auto;
+    font-size: 0.9rem;
+    color: #e5e5ea;
+}
+.country-pill-badge {
+    background-color: var(--primary-accent);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    text-transform: uppercase;
 }

@@ -2,27 +2,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- ESTADO GLOBAL DE LA APLICACIÓN ---
     const appState = {
         currentStep: 1,
-        totalSteps: 4, 
+        totalSteps: 5, // Incrementado a 5 por la nueva sección de jugador
         horarioLibre: {
             0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: []
         },
-        nacionalidad: "", 
+        nacionalidad: "",      // País favorito de la pregunta 2
+        jugadorFavorito: "",   // Nombre del jugador elegido
+        paisJugadorFavorito: "", // País del jugador elegido para aplicar el boost simétrico
+        
         w_calidad_elo: 0,
         w_calidad_fifa: 0,
         w_paridad_elo: 0,
         w_paridad_fifa: 0,
         
-        // Offset dinámico del cliente en minutos convertido a milisegundos para las operaciones nativas
         clientTimezoneOffsetMs: new Date().getTimezoneOffset() * 60 * 1000,
 
         partidosData: [],
         partidosRecomendados: [],
+        jugadoresData: [], // Almacén dinámico para el listado del nuevo CSV
         
         currentSortField: 'recommendation_order',
         currentSortOrder: 'asc'
     };
 
-    // --- VARIABLES DE ARRASTRE DE LA GRILLA (POSICIONADAS AL PRINCIPIO) ---
     let isDragging = false;
     let dragSelectMode = true;
 
@@ -59,9 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         0: 'Domingo', 1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado'
     };
 
-    const mesesLargos = {
-        5: 'Junio', 6: 'Julio'
-    };
+    const mesesLargos = { 5: 'Junio', 6: 'Julio' };
 
     const btnStart = document.getElementById('btn-start');
     const progressContainer = document.getElementById('progress-container');
@@ -76,58 +76,37 @@ document.addEventListener('DOMContentLoaded', () => {
         buildAvailabilityGrid();
         populateCountriesDropdown();
         loadPartidosCSV(); 
+        loadJugadoresCSV(); 
 
-        // Botón inicial
         btnStart.addEventListener('click', () => {
-            appState.currentStep = 1; // Primero fijamos el paso 1
+            appState.currentStep = 1;
             updateProgressBar();
-            actualizarOscuridadFondo(); // ¡Acá ahora sí va a activar la clase dimmed-step-1!
+            
+            const bgWrapper = document.querySelector('.landing-bg-wrapper');
+            if (bgWrapper) bgWrapper.classList.remove('hidden');
+            
+            actualizarOscuridadFondo();
             progressContainer.classList.remove('hidden');
             transitionToPhase('phase-onboarding');
         });
 
-        // Link para volver a configurar al final
-        const linkReset = document.getElementById('link-reset-onboarding');
-        if (linkReset) {
-            linkReset.addEventListener('click', (e) => {
-                e.preventDefault();
-                appState.currentStep = 1;
-                updateProgressBar();
-                actualizarOscuridadFondo(); // Limpia los oscurecidos
-                progressContainer.classList.remove('hidden');
-                transitionToPhase('phase-onboarding');
-            });
-        }
-
-        // --- NUEVO: LÓGICA PARA MARCAR TODA LA GRILLA COMO LIBRE ---
         const btnSelectAll = document.getElementById('btn-select-all-hours');
         if (btnSelectAll) {
             btnSelectAll.addEventListener('click', () => {
-                // Capturamos todas las celdas horarias generadas en el DOM
                 const todasLasCeldas = document.querySelectorAll('.grid-cell');
-                
-                // Evaluamos si ya están todas seleccionadas para alternar el comportamiento (Toggle)
                 const celdasSeleccionadas = document.querySelectorAll('.grid-cell.selected');
                 const marcarTodas = celdasSeleccionadas.length < todasLasCeldas.length;
 
                 todasLasCeldas.forEach(cell => {
-                    if (marcarTodas) {
-                        cell.classList.add('selected');
-                    } else {
-                        cell.classList.remove('selected');
-                    }
+                    if (marcarTodas) cell.classList.add('selected');
+                    else cell.classList.remove('selected');
                 });
-
-                // Cambiamos dinámicamente el texto del botón para que sea intuitivo
-                if (marcarTodas) {
-                    btnSelectAll.textContent = "🧹 Desmarcar todo";
-                } else {
-                    btnSelectAll.textContent = "✨ Marcar todo como libre";
-                }
+                btnSelectAll.textContent = marcarTodas ? "🧹 Desmarcar todo" : "✨ Marcar todo como libre";
             });
         }
 
-        // Configuración de los disparadores basados en clases (Fiel a tu index.html)
+        setupPlayerSearchbox();
+
         document.querySelectorAll('.next-step-trigger').forEach(btn => {
             btn.addEventListener('click', () => { handleNavigationNext(); });
         });
@@ -143,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // ESCUCHA DE COLUMNAS CONFIGURADA UNA SOLA VEZ AL INICIO Y BLINDADA
         document.querySelectorAll('#recommendations-table th').forEach(th => {
             th.addEventListener('click', () => {
                 const sortField = th.dataset.sort;
@@ -158,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 document.querySelectorAll('#recommendations-table th').forEach(h => h.classList.remove('active-sort', 'asc', 'desc'));
                 th.classList.add('active-sort', appState.currentSortOrder);
-                
                 sortAndRenderTable();
             });
         });
@@ -168,14 +145,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!selectNacionalidad) return;
         selectNacionalidad.innerHTML = '';
         const defaultOption = document.createElement('option');
-        defaultOption.value = ""; defaultOption.textContent = "Ninguno / Soy neutral";
+        defaultOption.value = ""; defaultOption.textContent = "🌍 Ninguno / Soy neutral";
         selectNacionalidad.appendChild(defaultOption);
 
         const copiaOrdenada = [...listadoPaisesEspanol].sort((a, b) => a.localeCompare(b));
         copiaOrdenada.forEach(paisEsp => {
             const o = document.createElement('option');
-            o.value = paisEsp; 
-            o.textContent = paisEsp;
+            o.value = paisEsp; o.textContent = paisEsp;
             selectNacionalidad.appendChild(o);
         });
     }
@@ -183,32 +159,129 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadPartidosCSV() {
         try {
             const response = await fetch('./data/matriz_partidos_scaled_pca.csv');
-            if (!response.ok) throw new Error("No se pudo cargar el archivo.");
+            if (!response.ok) throw new Error();
+            const csvText = await response.text();
+            appState.partidosData = parseGenericCSV(csvText);
+        } catch (e) { console.warn("Mitigación CORS activa partidos."); }
+    }
+
+    async function loadJugadoresCSV() {
+        try {
+            const response = await fetch('./data/jugadores_todos_los_paises.csv');
+            if (!response.ok) throw new Error("Error al consultar el archivo de jugadores.");
             const csvText = await response.text();
             
             const lines = csvText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
-            const headers = lines[0].split(',').map(h => h.replace(/^["']|["']$/g, '').trim());
+            if (lines.length < 2) return;
+
+            const separador = lines[0].includes(';') ? ';' : ',';
+            const headers = lines[0].split(separador).map(h => h.replace(/^["']|["']$/g, '').trim());
             
-            const listData = [];
-            for (let i = 1; i < lines.length; i++) {
-                const columns = lines[i].split(',');
-                if (columns.length < headers.length) continue;
-                
-                const rowObj = {};
-                headers.forEach((header, index) => {
-                    const value = columns[index].replace(/^["']|["']$/g, '').trim();
-                    if (header === 'home_team' || header === 'away_team' || header === 'id_partido' || header === 'date' || header === 'time_utc') {
-                        rowObj[header] = value;
-                    } else {
-                        rowObj[header] = parseFloat(value);
-                    }
-                });
-                listData.push(rowObj);
+            const idxPlayer = headers.indexOf('Player');
+            const idxCountry = headers.indexOf('Country');
+
+            if (idxPlayer === -1 || idxCountry === -1) {
+                console.error("No se encontraron las columnas 'Player' o 'Country' en el CSV.");
+                return;
             }
-            appState.partidosData = listData;
+
+            const listadoCargado = [];
+            for (let i = 1; i < lines.length; i++) {
+                const columns = lines[i].split(separador);
+                if (columns.length < headers.length) continue;
+
+                const nameValue = columns[idxPlayer].replace(/^["']|["']$/g, '').trim();
+                const countryValue = columns[idxCountry].replace(/^["']|["']$/g, '').trim();
+
+                if (nameValue) {
+                    listadoCargado.push({
+                        Player: nameValue,
+                        Country: countryValue
+                    });
+                }
+            }
+
+            appState.jugadoresData = listadoCargado;
+            console.log(`✅ Buscador listo: ${appState.jugadoresData.length} jugadores cargados.`);
         } catch (error) {
-            console.warn("Fallo de entorno local CORS mitigado.");
+            console.error("Fallo crítico al procesar jugadores:", error);
         }
+    }
+
+    function setupPlayerSearchbox() {
+        const inputSearch = document.getElementById('input-search-player');
+        const dropdown = document.getElementById('player-results-dropdown');
+        const btnClear = document.getElementById('btn-clear-player');
+        const badge = document.getElementById('saved-player-badge');
+        const txtPlayer = document.getElementById('txt-saved-player');
+        const txtCountry = document.getElementById('txt-saved-player-country');
+
+        if (!inputSearch) return;
+
+        inputSearch.addEventListener('input', () => {
+            const query = inputSearch.value.trim().toLowerCase();
+            
+            if (query.length < 2) {
+                dropdown.classList.add('hidden');
+                btnClear.classList.add('hidden');
+                return;
+            }
+
+            btnClear.classList.remove('hidden');
+
+            const matches = appState.jugadoresData.filter(j => j.Player && j.Player.toLowerCase().includes(query)).slice(0, 10);
+
+            if (matches.length === 0) {
+                dropdown.innerHTML = '<div style="padding:12px; color:#aeaeb2; text-align:center; font-size:0.9rem;">No se encontraron jugadores</div>';
+                dropdown.classList.remove('hidden');
+                return;
+            }
+
+            dropdown.innerHTML = '';
+            matches.forEach(jugador => {
+                const row = document.createElement('div');
+                row.classList.add('player-suggest-row');
+                
+                row.innerHTML = `
+                    <span class="player-suggest-name">${jugador.Player}</span>
+                    <span class="player-suggest-meta">${jugador.Country}</span>
+                `;
+
+                row.addEventListener('click', () => {
+                    appState.jugadorFavorito = jugador.Player;
+                    appState.paisJugadorFavorito = jugador.Country; // Ya viene en inglés directo
+
+                    inputSearch.value = jugador.Player;
+                    
+                    dropdown.innerHTML = '';
+                    dropdown.classList.add('hidden');
+                    inputSearch.blur();
+
+                    txtPlayer.textContent = jugador.Player;
+                    txtCountry.textContent = jugador.Country;
+                    badge.classList.remove('hidden');
+                });
+
+                dropdown.appendChild(row);
+            });
+
+            dropdown.classList.remove('hidden');
+        });
+
+        btnClear.addEventListener('click', () => {
+            inputSearch.value = '';
+            appState.jugadorFavorito = "";
+            appState.paisJugadorFavorito = "";
+            dropdown.classList.add('hidden');
+            btnClear.classList.add('hidden');
+            badge.classList.add('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!inputSearch.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
     }
 
     function handleNavigationNext() {
@@ -226,21 +299,22 @@ document.addEventListener('DOMContentLoaded', () => {
             appState.currentStep = 3; document.getElementById('step-3').classList.add('active');
             updateProgressBar();
         } else if (appState.currentStep === 3) {
-            const val = parseInt(document.getElementById('slider-calidad').value, 10);
-            appState.w_calidad_elo = val / 2; appState.w_calidad_fifa = val / 2;
             document.getElementById('step-3').classList.remove('active');
             appState.currentStep = 4; document.getElementById('step-4').classList.add('active');
             updateProgressBar();
         } else if (appState.currentStep === 4) {
+            const val = parseInt(document.getElementById('slider-calidad').value, 10);
+            appState.w_calidad_elo = val / 2; appState.w_calidad_fifa = val / 2;
+            document.getElementById('step-4').classList.remove('active');
+            appState.currentStep = 5; document.getElementById('step-5').classList.add('active');
+            updateProgressBar();
+        } else if (appState.currentStep === 5) {
             const val = parseInt(document.getElementById('slider-paridad').value, 10);
             appState.w_paridad_elo = val / 2; appState.w_paridad_fifa = val / 2;
             
-            appState.currentStep = 5;
-            updateProgressBar();
             runLoadingAndRecommendationFlow();
+            return;
         }
-
-        // NUEVO: Actualizar el nivel de atenuación del fondo al avanzar
         actualizarOscuridadFondo();
     }
 
@@ -257,24 +331,12 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('step-4').classList.remove('active');
             appState.currentStep = 3; document.getElementById('step-3').classList.add('active');
             updateProgressBar();
+        } else if (appState.currentStep === 5) {
+            document.getElementById('step-5').classList.remove('active');
+            appState.currentStep = 4; document.getElementById('step-4').classList.add('active');
+            updateProgressBar();
         }
-
-        // NUEVO: Actualizar el nivel de atenuación del fondo al retroceder
         actualizarOscuridadFondo();
-    }
-
-    // NUEVA FUNCIÓN AUXILIAR: Maneja las clases de intensidad del fondo
-    function actualizarOscuridadFondo() {
-        const bgWrapper = document.querySelector('.landing-bg-wrapper');
-        if (!bgWrapper) return;
-
-        // Limpiamos todas las clases previas de intensidad para evitar solapamientos
-        bgWrapper.classList.remove('dimmed-step-1', 'dimmed-step-2', 'dimmed-step-3', 'dimmed-step-4', 'dimmed-step-5');
-
-        // Si ya entramos al onboarding (Paso 1 al 5), asignamos la clase exacta de su paso
-        if (appState.currentStep >= 1 && appState.currentStep <= 5) {
-            bgWrapper.classList.add(`dimmed-step-${appState.currentStep}`);
-        }
     }
 
     function updateProgressBar() {
@@ -283,20 +345,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function runLoadingAndRecommendationFlow() {
+        const bgWrapper = document.querySelector('.landing-bg-wrapper');
+        if (bgWrapper) {
+            bgWrapper.classList.remove('dimmed-step-1', 'dimmed-step-2', 'dimmed-step-3', 'dimmed-step-4');
+            bgWrapper.classList.add('dimmed-step-5');
+        }
+
         transitionToPhase('phase-loading');
+        
         setTimeout(() => {
             calcularRecomendacionesMotor();
             renderSummaryHeader();
-            sortAndRenderTable(); // Renderizado inicial directo y seguro
+            sortAndRenderTable();
+            
+            if (bgWrapper) {
+                bgWrapper.classList.add('hidden');
+            }
+            
             progressContainer.classList.add('hidden');
             transitionToPhase('phase-results');
         }, 1800); 
     }
 
-    // --- MOTOR DE RECOMENDACIÓN ---
     function calcularRecomendacionesMotor() {
         const partidos = appState.partidosData;
-        const favUsuario = appState.nacionalidad;
+        const favPais = appState.nacionalidad;
+        const favPaisJugador = appState.paisJugadorFavorito; 
 
         const pesosCrudos = {
             w_calidad_elo: appState.w_calidad_elo,
@@ -370,15 +444,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return item;
         });
 
-        // Ordenamiento base para estampar el ranking oficial de recomendación matemático
         calculados.sort((a, b) => b.Score_Recomendacion - a.Score_Recomendacion);
 
-        // Estampar índice original de recomendación
         calculados.forEach((partido, index) => {
             partido['recommendation_order'] = index + 1;
         });
 
-        // Calcular Percentiles globales
         const scoresOrdenados = calculados.map(c => c.Score_Recomendacion).sort((a, b) => a - b);
         
         function getQuantile(sortedArr, q) {
@@ -399,18 +470,14 @@ document.addEventListener('DOMContentLoaded', () => {
         calculados.forEach(item => {
             const score = item.Score_Recomendacion;
             const disp = item.feature_disponibilidad;
-            const esPartidoFavorito = (item.home_team === favUsuario || item.away_team === favUsuario);
+            
+            const esPartidoPrioritario = (item.home_team === favPais || item.away_team === favPais || item.home_team === favPaisJugador || item.away_team === favPaisJugador);
 
-            if (esPartidoFavorito) {
-                if (disp === 0.0) {
-                    item['Categoria'] = "Vale la pena 📺";
-                } else {
-                    item['Categoria'] = "Imperdible 🌟";
-                }
+            if (esPartidoPrioritario) {
+                item['Categoria'] = (disp === 0.0) ? "Vale la pena 📺" : "Imperdible 🌟";
             } else {
                 if (score >= pAlta) {
-                    if (disp === 0.0) item['Categoria'] = "Vale la pena 📺";
-                    else item['Categoria'] = "Imperdible 🌟";
+                    item['Categoria'] = (disp === 0.0) ? "Vale la pena 📺" : "Imperdible 🌟";
                 } else if (score >= pMedia) {
                     item['Categoria'] = "Vale la pena 📺";
                 } else {
@@ -442,6 +509,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        let txtJugador = appState.jugadorFavorito !== "" ? ` · Siguiendo a ${appState.jugadorFavorito}` : "";
+
         const sliderParidadVal = parseInt(document.getElementById('slider-paridad').value, 10);
         const desvioHoras = Math.round(appState.clientTimezoneOffsetMs / -3600000);
         const gmtText = desvioHoras >= 0 ? `+${desvioHoras}` : desvioHoras;
@@ -451,14 +520,14 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (sliderParidadVal < -15) txtParidad = "Preferís goleadas";
 
         document.getElementById('profile-summary-text').textContent = 
-            `${paisUI} · Agenda Local Activa (GMT ${gmtText}) · ${txtParidad}`;
+            `${paisUI}${txtJugador} · Agenda Local Activa (GMT ${gmtText}) · ${txtParidad}`;
     }
 
-    // --- ORDENAMIENTO DE ENCABEZADOS Y RENDERIZADO ---
     function sortAndRenderTable() {
         const field = appState.currentSortField;
         const order = appState.currentSortOrder;
-        const favUsuario = appState.nacionalidad; 
+        const favPais = appState.nacionalidad; 
+        const favPaisJugador = appState.paisJugadorFavorito; 
 
         const banderasPaises = {
             "Korea Republic": "🇰🇷", "Mexico": "🇲🇽", "Czechia": "🇨🇿", "South Africa": "🇿🇦",
@@ -475,225 +544,229 @@ document.addEventListener('DOMContentLoaded', () => {
             "Panama": "🇵🇦", "England": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "Ghana": "🇬🇭", "Croatia": "🇭🇷"
         };
 
-        // 1. Clasificación base de ordenamiento genérico por campos
         const baseSorted = [...appState.partidosRecomendados].sort((a, b) => {
-            let valA = a[field];
-            let valB = b[field];
-
+            let valA = a[field]; let valB = b[field];
             if (field === 'Partido') {
-                valA = `${a.home_team} vs ${a.away_team}`;
-                valB = `${b.home_team} vs ${b.away_team}`;
+                valA = `${a.home_team} vs ${a.away_team}`; valB = `${b.home_team} vs ${b.away_team}`;
             }
-
-            if (typeof valA === 'string') {
-                return order === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
-            } else {
-                return order === 'asc' ? valA - valB : valB - valA;
-            }
+            if (typeof valA === 'string') return order === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            else return order === 'asc' ? valA - valB : valB - valA;
         });
 
-        // 2. Particionar por bloque prioritario de Selección (Solo si no está ordenando explícitamente por Fecha, Hora o Score)
         let finalSorted = baseSorted;
-        if (favUsuario !== "" && (field === 'recommendation_order' || field === 'Score_Recomendacion')) {
-            const partidosFavoritos = baseSorted.filter(p => p.home_team === favUsuario || p.away_team === favUsuario);
-            const partidosRestantes = baseSorted.filter(p => p.home_team !== favUsuario && p.away_team !== favUsuario);
+        const tieneFiltrosActivos = (favPais !== "" || favPaisJugador !== "");
+
+        if (tieneFiltrosActivos && (field === 'recommendation_order' || field === 'Score_Recomendacion')) {
+            const partidosFavoritos = baseSorted.filter(p => p.home_team === favPais || p.away_team === favPais || p.home_team === favPaisJugador || p.away_team === favPaisJugador);
+            const partidosRestantes = baseSorted.filter(p => p.home_team !== favPais && p.away_team !== favPais && p.home_team !== favPaisJugador && p.away_team !== favPaisJugador);
             
-            if (order === 'asc') {
-                finalSorted = [...partidosFavoritos, ...partidosRestantes];
-            } else {
-                finalSorted = [...partidosRestantes, ...partidosFavoritos];
-            }
+            finalSorted = order === 'asc' ? [...partidosFavoritos, ...partidosRestantes] : [...partidosRestantes, ...partidosFavoritos];
         }
+
+        // ==========================================================================
+        // CÁLCULO DEL TOP 30% PARA LA CATEGORÍA "VALE LA PENA"
+        // ==========================================================================
+        // Filtramos y ordenamos de mayor a menor los scores de los partidos que son estrictamente "Vale la pena"
+        const scoresValeLaPena = appState.partidosRecomendados
+            .filter(p => p.Categoria.includes("Vale la pena"))
+            .map(p => p.Score_Recomendacion)
+            .sort((a, b) => b - a);
+
+        // Determinamos el valor de corte del score para el 30% superior
+        let umbralTopValeLaPena = 1.0; 
+        if (scoresValeLaPena.length > 0) {
+            const indexCorte = Math.max(0, Math.floor(scoresValeLaPena.length * 0.30) - 1);
+            umbralTopValeLaPena = scoresValeLaPena[indexCorte];
+        }
+        // ==========================================================================
 
         tableBody.innerHTML = '';
 
-        // 3. Pintado dinámico de las celdas (Corregido para re-indexar correlativamente)
         finalSorted.forEach((partido, idx) => {
             const tr = document.createElement('tr');
             
-            if (partido.Categoria.includes("Imperdible")) {
-                tr.classList.add('row-cat-imperdible');
-            } else if (partido.Categoria.includes("Vale la pena")) {
-                tr.classList.add('row-cat-valepena');
-            } else {
-                tr.classList.add('row-cat-resumen');
-            }
+            const esImperdible = partido.Categoria.includes("Imperdible");
+            const esValeLaPena = partido.Categoria.includes("Vale la pena");
 
-            // CORRECCIÓN COMPLETA: Columna '#' correlativa según el orden final en pantalla
+            if (esImperdible) tr.classList.add('row-cat-imperdible');
+            else if (esValeLaPena) tr.classList.add('row-cat-valepena');
+            else tr.classList.add('row-cat-resumen');
+
+            // Columna '#' Secuencial
             const tdIndex = document.createElement('td');
-            // Si el orden de la columna es descendente (ej. invertido), cuenta al revés; si no, va del 1 al 72 limpio
-            tdIndex.textContent = order === 'desc' ? finalSorted.length - idx : idx + 1;
-            tdIndex.style.fontWeight = "700";
-            tdIndex.style.color = "var(--primary-accent)";
+            tdIndex.textContent = idx + 1; 
+            tdIndex.style.fontWeight = "700"; tdIndex.style.color = "var(--primary-accent)";
             tr.appendChild(tdIndex);
 
-            // Columna Partido alineada con Flexbox y banderas
-            const tdTeams = document.createElement('td');
-            tdTeams.classList.add('cell-teams');
+            // Columna Partido
+            const tdTeams = document.createElement('td'); tdTeams.classList.add('cell-teams');
+            const banderaHome = banderasPaises[partido.home_team] || ""; const banderaAway = banderasPaises[partido.away_team] || "";
             
-            const banderaHome = banderasPaises[partido.home_team] || "";
-            const banderaAway = banderasPaises[partido.away_team] || "";
-            
-            const spanHome = document.createElement('span');
-            spanHome.classList.add('cell-team-home');
+            const spanHome = document.createElement('span'); spanHome.classList.add('cell-team-home');
             spanHome.innerHTML = `<span class="flag-home">${banderaHome}</span>${partido.home_team}`;
-            
-            const spanVs = document.createElement('span');
-            spanVs.classList.add('cell-team-vs');
-            spanVs.textContent = "vs.";
-            
-            const spanAway = document.createElement('span');
-            spanAway.classList.add('cell-team-away');
+            const spanVs = document.createElement('span'); spanVs.classList.add('cell-team-vs'); spanVs.textContent = "vs.";
+            const spanAway = document.createElement('span'); spanAway.classList.add('cell-team-away');
             spanAway.innerHTML = `${partido.away_team}<span class="flag-away">${banderaAway}</span>`;
             
-            tdTeams.appendChild(spanHome);
-            tdTeams.appendChild(spanVs);
-            tdTeams.appendChild(spanAway);
+            tdTeams.appendChild(spanHome); tdTeams.appendChild(spanVs); tdTeams.appendChild(spanAway);
             tr.appendChild(tdTeams);
 
             // Columna Día
-            const tdDate = document.createElement('td');
-            tdDate.textContent = `${partido.local_day_name}, ${partido.local_day_num} de ${partido.local_month_name}`; 
+            const tdDate = document.createElement('td'); tdDate.textContent = `${partido.local_day_name}, ${partido.local_day_num} de ${partido.local_month_name}`; 
             tr.appendChild(tdDate);
 
             // Columna Hora
             const tdTime = document.createElement('td');
             const horaFormateada = partido.local_hour_1 < 10 ? `0${partido.local_hour_1}:00hs` : `${partido.local_hour_1}:00hs`;
-            tdTime.textContent = horaFormateada;
-            tr.appendChild(tdTime);
+            tdTime.textContent = horaFormateada; tr.appendChild(tdTime);
 
-            // Columna Score
+            // ==========================================================================
+            // MOTOR DE MOTIVOS CON RECORTE ESTADÍSTICO (Top 30% de Vale la Pena)
+            // ==========================================================================
             const tdScore = document.createElement('td');
-            const pct = Math.round(partido.Score_Recomendacion * 100);
-            const wrapper = document.createElement('div'); wrapper.classList.add('score-cell-wrapper');
-            const barBg = document.createElement('div'); barBg.classList.add('mini-bar-bg');
-            const barFill = document.createElement('div'); barFill.classList.add('mini-bar-fill');
-            barFill.style.width = `${pct}%`;
-            barBg.appendChild(barFill); wrapper.appendChild(barBg);
-            const txtPct = document.createElement('span'); txtPct.textContent = `${pct}%`;
-            wrapper.appendChild(txtPct); tdScore.appendChild(wrapper);
+            let motivoTexto = ""; 
+            let esFiltroFavorito = false;
+            
+            const paisJugadorIngles = diccionarioPaises[appState.paisJugadorFavorito] || appState.paisJugadorFavorito;
+
+            // REGLA 1: Prioridad máxima por País Favorito
+            if (favPais !== "" && (partido.home_team === favPais || partido.away_team === favPais)) {
+                let paisEsp = "tu equipo";
+                for (let key in diccionarioPaises) {
+                    if (diccionarioPaises[key] === favPais) { paisEsp = key; break; }
+                }
+                motivoTexto = `Juega ${paisEsp}`;
+                esFiltroFavorito = true;
+            }
+            // REGLA 2: Prioridad por Jugador Favorito
+            else if (appState.jugadorFavorito !== "" && (partido.home_team === paisJugadorIngles || partido.away_team === paisJugadorIngles)) {
+                motivoTexto = `Juega ${appState.jugadorFavorito}`;
+                esFiltroFavorito = true;
+            }
+            // REGLA 3: Clasificación basada en Sliders si es Imperdible, o si es del Top 30% de Vale la Pena
+            else {
+                const esTopValeLaPena = esValeLaPena && (partido.Score_Recomendacion >= umbralTopValeLaPena);
+                const llevaJustificacionDetallada = esImperdible || esTopValeLaPena;
+
+                if (llevaJustificacionDetallada) {
+                    const sliderCalidad = parseInt(document.getElementById('slider-calidad').value, 10);
+                    const sliderParidad = parseInt(document.getElementById('slider-paridad').value, 10);
+
+                    // Prioridad Paridad dominante
+                    if (Math.abs(sliderParidad) >= Math.abs(sliderCalidad) && sliderParidad !== 0) {
+                        motivoTexto = sliderParidad > 0 ? "Partido Parejo" : "Partido Disparejo";
+                    }
+                    // Prioridad Jerarquía dominante
+                    else if (sliderCalidad !== 0) {
+                        motivoTexto = sliderCalidad > 0 ? "Equipos Importantes" : "Equipos Exóticos";
+                    }
+                    // Respaldo estadístico neutral (0)
+                    else {
+                        if (partido.PC2_Calidad_scaled > 0.75) {
+                            motivoTexto = "Equipos Importantes";
+                        } else {
+                            motivoTexto = "Partido Parejo";
+                        }
+                    }
+                } 
+                // REGLA 4: Si es un "Vale la pena" común y corriente (fuera del top 30%), dice simplemente "Recomendado"
+                else if (esValeLaPena) {
+                    motivoTexto = "Recomendado";
+                }
+            }
+
+            // Renderizado estético en la celda
+            if (motivoTexto !== "") {
+                const txtMotivo = document.createElement('span');
+                txtMotivo.textContent = motivoTexto;
+                txtMotivo.style.fontWeight = "500";
+                
+                // Distribución de paleta de colores premium
+                if (esFiltroFavorito) {
+                    txtMotivo.style.color = "var(--primary-accent)"; // Verde flúo para tus elecciones fijas
+                } else if (motivoTexto.includes("Importantes") || motivoTexto.includes("Parejo")) {
+                    txtMotivo.style.color = "#ffca28"; // Ámbar para los motivos tácticos fuertes
+                } else {
+                    txtMotivo.style.color = "#aeaeb2"; // Gris tenue elegante para la palabra "Recomendado"
+                }
+                tdScore.appendChild(txtMotivo);
+            }
+
             tr.appendChild(tdScore);
+            // ==========================================================================
 
             // Columna Disponibilidad
             const tdDisp = document.createElement('td');
-            if (partido.feature_disponibilidad === 1.0) {
-                tdDisp.textContent = "✅ Completo"; tdDisp.style.color = "#00e676";
-            } else if (partido.feature_disponibilidad === 0.5) {
-                tdDisp.textContent = "🕐 Solo un tiempo"; tdDisp.style.color = "#ffca28";
-            } else {
-                tdDisp.textContent = "❌ No coincide con horarios"; tdDisp.style.color = "#aeaeb2";
-            }
+            if (partido.feature_disponibilidad === 1.0) { tdDisp.textContent = "✅ Completo"; tdDisp.style.color = "#00e676"; }
+            else if (partido.feature_disponibilidad === 0.5) { tdDisp.textContent = "🕐 Solo un tiempo"; tdDisp.style.color = "#ffca28"; }
+            else { tdDisp.textContent = "❌ No coincide con horarios"; tdDisp.style.color = "#aeaeb2"; }
             tr.appendChild(tdDisp);
 
             tableBody.appendChild(tr);
         });
     }
 
-    // --- CONSTRUCCIÓN DEL GRID INTERACTIVO PREMIUM ---
     function buildAvailabilityGrid() {
         if (!gridContainer) return;
         gridContainer.innerHTML = '';
-        
-        // 1. Esquina superior izquierda vacía
-        const emptyCorner = document.createElement('div');
-        gridContainer.appendChild(emptyCorner);
+        const emptyCorner = document.createElement('div'); gridContainer.appendChild(emptyCorner);
 
-        // 2. Generar Cabeceras de Hora (Columnas 0 a 23)
         for (let h = 0; h < 24; h++) {
-            const hourHeader = document.createElement('div');
-            hourHeader.classList.add('grid-header-cell'); 
-            hourHeader.textContent = h;
-            hourHeader.style.cursor = 'pointer'; // Indicador visual de que es clickeable
-            hourHeader.title = `Marcar/Desmarcar las ${h}:00hs para toda la semana`;
-
-            // EVENTO: Clic en el número de la hora (Columna Completa)
+            const hourHeader = document.createElement('div'); hourHeader.classList.add('grid-header-cell'); hourHeader.textContent = h; hourHeader.style.cursor = 'pointer';
             hourHeader.addEventListener('click', () => {
-                // Buscamos todas las celdas que correspondan a esa hora específica
                 const celdasColumna = gridContainer.querySelectorAll(`.grid-cell[data-hour="${h}"]`);
                 const celdasSeleccionadas = gridContainer.querySelectorAll(`.grid-cell.selected[data-hour="${h}"]`);
-                
-                // Si no están todas marcadas, marcamos la columna entera. Si ya estaban todas, limpiamos.
                 const marcarTodas = celdasSeleccionadas.length < celdasColumna.length;
-                celdasColumna.forEach(cell => {
-                    if (marcarTodas) cell.classList.add('selected');
-                    else cell.classList.remove('selected');
-                });
+                celdasColumna.forEach(cell => { if (marcarTodas) cell.classList.add('selected'); else cell.classList.remove('selected'); });
             });
-
             gridContainer.appendChild(hourHeader);
         }
 
-        // 3. Generar Filas por cada Día de la Semana
         const diasSemana = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
         diasSemana.forEach((dia, dayIndex) => {
-            const dayLabel = document.createElement('div');
-            dayLabel.classList.add('day-label'); 
-            dayLabel.textContent = dia;
-            dayLabel.style.cursor = 'pointer'; // Indicador visual de que es clickeable
-            dayLabel.title = `Marcar/Desmarcar todo el ${dia}`;
-
-            // EVENTO: Clic en la etiqueta del Día (Fila Completa)
+            const dayLabel = document.createElement('div'); dayLabel.classList.add('day-label'); dayLabel.textContent = dia; dayLabel.style.cursor = 'pointer';
             dayLabel.addEventListener('click', () => {
-                // Buscamos todas las celdas que correspondan a ese día específico
                 const celdasFila = gridContainer.querySelectorAll(`.grid-cell[data-day="${dayIndex}"]`);
                 const celdasSeleccionadas = gridContainer.querySelectorAll(`.grid-cell.selected[data-day="${dayIndex}"]`);
-                
-                // Alternamos comportamiento (Toggle) para la fila completa
                 const marcarTodas = celdasSeleccionadas.length < celdasFila.length;
-                celdasFila.forEach(cell => {
-                    if (marcarTodas) cell.classList.add('selected');
-                    else cell.classList.remove('selected');
-                });
+                celdasFila.forEach(cell => { if (marcarTodas) cell.classList.add('selected'); else cell.classList.remove('selected'); });
             });
-
             gridContainer.appendChild(dayLabel);
 
-            // 4. Generar las celdas horarias individuales de la fila
             for (let hour = 0; hour < 24; hour++) {
-                const cell = document.createElement('div');
-                cell.classList.add('grid-cell'); 
-                cell.dataset.day = dayIndex; 
-                cell.dataset.hour = hour;
-
-                // Eventos nativos de arrastre y clic individual que ya tenías funcionando
+                const cell = document.createElement('div'); cell.classList.add('grid-cell'); cell.dataset.day = dayIndex; cell.dataset.hour = hour;
                 cell.addEventListener('mousedown', (e) => {
-                    e.preventDefault(); 
-                    isDragging = true;
-                    dragSelectMode = !cell.classList.contains('selected');
-                    toggleCell(cell, dragSelectMode);
+                    e.preventDefault(); isDragging = true; dragSelectMode = !cell.classList.contains('selected'); toggleCell(cell, dragSelectMode);
                 });
-                cell.addEventListener('mouseenter', () => { 
-                    if (isDragging) toggleCell(cell, dragSelectMode); 
-                });
-                cell.addEventListener('touchstart', () => {
-                    dragSelectMode = !cell.classList.contains('selected');
-                    toggleCell(cell, dragSelectMode);
-                });
+                cell.addEventListener('mouseenter', () => { if (isDragging) toggleCell(cell, dragSelectMode); });
+                cell.addEventListener('touchstart', () => { dragSelectMode = !cell.classList.contains('selected'); toggleCell(cell, dragSelectMode); });
                 gridContainer.appendChild(cell);
             }
         });
-        
         window.addEventListener('mouseup', () => { isDragging = false; });
     }
 
-    function toggleCell(cell, select) {
-        if (select) {
-            cell.classList.add('selected');
-        } else {
-            cell.classList.remove('selected');
-        }
-    }
+    function toggleCell(cell, select) { if (select) cell.classList.add('selected'); else cell.classList.remove('selected'); }
 
     function saveGridData() {
         for (let i = 0; i < 7; i++) appState.horarioLibre[i] = [];
         const selectedCells = gridContainer.querySelectorAll('.grid-cell.selected');
         selectedCells.forEach(cell => {
-            const day = parseInt(cell.dataset.day, 10);
-            const hour = parseInt(cell.dataset.hour, 10);
-            if (!appState.horarioLibre[day].includes(hour)) {
-                appState.horarioLibre[day].push(hour);
-            }
+            const day = parseInt(cell.dataset.day, 10); const hour = parseInt(cell.dataset.hour, 10);
+            if (!appState.horarioLibre[day].includes(hour)) appState.horarioLibre[day].push(hour);
         });
+    }
+
+    function actualizarOscuridadFondo() {
+        const bgWrapper = document.querySelector('.landing-bg-wrapper'); if (!bgWrapper) return;
+        bgWrapper.classList.remove('dimmed-step-1', 'dimmed-step-2', 'dimmed-step-3', 'dimmed-step-4', 'dimmed-step-5');
+        
+        if (appState.currentStep >= 1 && appState.currentStep <= 6) {
+            let numClase = appState.currentStep;
+            if (numClase === 5) numClase = 4; 
+            if (numClase === 6) numClase = 5; 
+            bgWrapper.classList.add(`dimmed-step-${numClase}`);
+        }
     }
 
     function transitionToPhase(nextPhaseId) {
@@ -705,11 +778,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 const nextPhase = document.getElementById(nextPhaseId);
                 if (nextPhase) {
                     nextPhase.style.display = 'block';
-                    setTimeout(() => {
-                        nextPhase.classList.add('active'); nextPhase.style.opacity = '1'; nextPhase.style.transform = 'translateY(0)';
-                    }, 20);
+                    setTimeout(() => { nextPhase.classList.add('active'); nextPhase.style.opacity = '1'; nextPhase.style.transform = 'translateY(0)'; }, 20);
                 }
             }, 400);
         }
+    }
+
+    // ==========================================================================
+    // FUNCIÓN INYECTADA: PARSEADOR GENÉRICO DE ARCHIVOS CSV REPARADO
+    // ==========================================================================
+    function parseGenericCSV(text) {
+        const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+        if (lines.length === 0) return [];
+
+        const headers = lines[0].split(',').map(h => h.replace(/^["']|["']$/g, '').trim());
+        const list = [];
+
+        for (let i = 1; i < lines.length; i++) {
+            const columns = lines[i].split(',');
+            if (columns.length < headers.length) continue;
+
+            const obj = {};
+            headers.forEach((h, idx) => {
+                const val = columns[idx].replace(/^["']|["']$/g, '').trim();
+                // Si la columna es un identificador o texto, la dejamos estática; si no, la parseamos como float
+                if (h === 'home_team' || h === 'away_team' || h === 'id_partido' || h === 'date' || h === 'time_utc' || h === 'Country' || h === 'Player' || h === 'Position' || h === 'Club') {
+                    obj[h] = val;
+                } else {
+                    obj[h] = parseFloat(val);
+                }
+            });
+            list.push(obj);
+        }
+        return list;
     }
 });
